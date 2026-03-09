@@ -403,7 +403,8 @@
         "backup": "Data Backup",
         "clipboard": "Clipboard",
         "general": "General",
-        "history": "History",
+        "history": "Storage",
+        "storage": "Storage",
         "shortcut": "Shortcuts"
       }
     },
@@ -486,6 +487,44 @@
           "quick_paste": "Quick Paste"
         },
         "title": "Shortcuts"
+      }
+    },
+    "storage": {
+      "storage_stats": {
+        "title": "Storage Statistics",
+        "subtitle": "Content space usage breakdown",
+        "total_label": "Total",
+        "items": "items",
+        "used_space": "Used Space",
+        "records": "records",
+        "top_usage": "Top Usage",
+        "col_type": "Type",
+        "col_count": "Count",
+        "col_size": "Size",
+        "time_range": "Time Range",
+        "scope_all": "All",
+        "scope_favorite": "Favorites",
+        "time_range_opt": {
+          "all": "All",
+          "today": "Today",
+          "yesterday": "Yesterday",
+          "last_3_days": "Last 3 days",
+          "this_week": "This week",
+          "this_month": "This month",
+          "custom": "Custom"
+        },
+        "clean_by_type": "Clean by Type",
+        "clean_hint": "Select type to batch clean unfavorited records",
+        "clean_hint_favorite": "Select type to batch clean favorited records",
+        "clean_selected": "Clean Selected",
+        "clean_confirm": "Are you sure to delete all unfavorited records of selected types?",
+        "clean_confirm_favorite": "Are you sure to delete all favorited records of selected types?",
+        "clean_success": "Clean successfully",
+        "button_cancel": "Cancel",
+        "button_confirm_clean": "Confirm Delete"
+      },
+      "auto_clean": {
+        "title": "Auto Clean Settings"
       }
     },
     "title": "Preferences"

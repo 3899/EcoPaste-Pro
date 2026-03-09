@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import UnoIcon from "@/components/UnoIcon";
 import { useTauriFocus } from "@/hooks/useTauriFocus";
 import { getDatabase } from "@/database";
+import { CONTENT_TYPE_TAGS } from "@/constants/contentTypes";
 import { MainContext } from "../..";
 
 type FilterMode = "day" | "month" | "custom";
@@ -18,20 +19,7 @@ const DateFilter = () => {
   const [monthDate, setMonthDate] = useState<Dayjs | null>(null);
   const [customDates, setCustomDates] = useState<[Dayjs | null, Dayjs | null]>([null, null]);
 
-  const TAGS = [
-    { key: "text", label: "纯文本" },
-    { key: "rtf", label: "富文本" },
-    { key: "html", label: "HTML" },
-    { key: "image", label: "图片" },
-    { key: "url", label: "链接" },
-    { key: "path", label: "路径" },
-    { key: "code", label: "代码" },
-    { key: "markdown", label: "Markdown" },
-    { key: "email", label: "邮箱" },
-    { key: "color", label: "颜色" },
-    { key: "command", label: "指令" },
-    { key: "files", label: "文件(夹)" },
-  ];
+  const TAGS = CONTENT_TYPE_TAGS;
 
   useEffect(() => {
     if (open) {

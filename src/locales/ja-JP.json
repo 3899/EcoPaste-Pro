@@ -400,7 +400,8 @@
         "backup": "バックアップ",
         "clipboard": "クリップボード",
         "general": "共通設定",
-        "history": "履歴",
+        "history": "ストレージ",
+        "storage": "ストレージ",
         "shortcut": "ショートカットキー"
       }
     },
@@ -483,6 +484,40 @@
           "quick_paste": "クイックペースト"
         },
         "title": "ショートカットキー"
+      }
+    },
+    "storage": {
+      "storage_stats": {
+        "title": "ストレージ統計",
+        "subtitle": "コンテンツ容量使用状況",
+        "total_label": "合計",
+        "items": "件",
+        "used_space": "使用中の容量",
+        "records": "件のレコード",
+        "top_usage": "主な使用",
+        "col_type": "種類",
+        "col_count": "数量",
+        "col_size": "サイズ",
+        "time_range": "期間",
+        "time_range_opt": {
+          "all": "すべて",
+          "today": "今日",
+          "yesterday": "昨日",
+          "last_3_days": "過去3日間",
+          "this_week": "今週",
+          "this_month": "今月",
+          "custom": "カスタム"
+        },
+        "clean_by_type": "種類別クリーン",
+        "clean_hint": "種類タグを選択して未お気に入りレコードを一括削除",
+        "clean_selected": "選択を削除",
+        "clean_confirm": "選択した種類の未お気に入りレコードをすべて削除しますか？",
+        "clean_success": "削除成功",
+        "button_cancel": "キャンセル",
+        "button_confirm_clean": "削除する"
+      },
+      "auto_clean": {
+        "title": "自動クリーンアップ設定"
       }
     },
     "title": "環境設定"

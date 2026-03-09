@@ -45,60 +45,28 @@ export const isEmail = (value: string) => {
  * 是否为颜色
  */
 export const isColor = (value: string) => {
-  const excludes = [
-    "none",
-    "currentColor",
-    "-moz-initial",
-    "inherit",
-    "initial",
-    "revert",
-    "revert-layer",
-    "unset",
-    "ActiveBorder",
-    "ActiveCaption",
-    "AppWorkspace",
-    "Background",
-    "ButtonFace",
-    "ButtonHighlight",
-    "ButtonShadow",
-    "ButtonText",
-    "CaptionText",
-    "GrayText",
-    "Highlight",
-    "HighlightText",
-    "InactiveBorder",
-    "InactiveCaption",
-    "InactiveCaptionText",
-    "InfoBackground",
-    "InfoText",
-    "Menu",
-    "MenuText",
-    "Scrollbar",
-    "ThreeDDarkShadow",
-    "ThreeDFace",
-    "ThreeDHighlight",
-    "ThreeDLightShadow",
-    "ThreeDShadow",
-    "Window",
-    "WindowFrame",
-    "WindowText",
-  ];
+  if (!value || typeof value !== "string") return false;
 
-  if (excludes.includes(value) || value.includes("url")) return false;
+  const val = value.trim();
 
-  // CMYK 格式无法被浏览器 CSS 引擎识别，需要通过正则前置判断
-  if (/^cmyk\(\s*\d+%?\s*,\s*\d+%?\s*,\s*\d+%?\s*,\s*\d+%?\s*\)$/i.test(value)) {
+  // Hex colors: #fff, #ffff, #ffffff, #ffffffff
+  if (/^#([0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/.test(val)) {
     return true;
   }
 
-  const style = new Option().style;
+  // rgb / rgba / hsl / hsla
+  if (/^(rgb|hsl)a?\(/i.test(val)) {
+    const style = new Option().style;
+    style.color = val;
+    return style.color !== "";
+  }
 
-  style.backgroundColor = value;
-  style.backgroundImage = value;
+  // CMYK 格式无法被浏览器 CSS 引擎识别，需要通过正则判断
+  if (/^cmyk\(\s*\d+%?\s*,\s*\d+%?\s*,\s*\d+%?\s*,\s*\d+%?\s*\)$/i.test(val)) {
+    return true;
+  }
 
-  const { backgroundColor, backgroundImage } = style;
-
-  return backgroundColor !== "" || backgroundImage !== "";
+  return false;
 };
 
 /**

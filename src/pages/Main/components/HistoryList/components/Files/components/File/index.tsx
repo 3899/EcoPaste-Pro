@@ -10,6 +10,7 @@ import {
 } from "tauri-plugin-fs-pro-api";
 import LocalImage from "@/components/LocalImage";
 import { isImage, isLinux } from "@/utils/is";
+import { getSaveIconPath } from "@/utils/path";
 
 interface FileProps {
   path: string;
@@ -33,7 +34,7 @@ const File: FC<FileProps> = (props) => {
 
       if (isLinux) return;
 
-      state.icon = await icon(path, { size: 256 });
+      state.icon = await icon(path, { size: 256, savePath: getSaveIconPath() });
     } catch {
       state.fullName = await fullName(path);
     }

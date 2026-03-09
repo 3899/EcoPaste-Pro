@@ -1,6 +1,6 @@
 import Database from "@tauri-apps/plugin-sql";
 import { isBoolean } from "es-toolkit";
-import { Kysely } from "kysely";
+import { Kysely, sql } from "kysely";
 import { TauriSqliteDialect } from "kysely-dialect-tauri";
 import { SerializePlugin } from "kysely-plugin-serialize";
 import type { DatabaseSchema } from "@/types/database";
@@ -51,6 +51,7 @@ export const getDatabase = async () => {
     { name: "subtype", type: "text" },
     { name: "sourceAppName", type: "text" },
     { name: "sourceAppIcon", type: "text" },
+    { name: "value_size", type: "integer", modifier: (col) => col.defaultTo(0) },
   ];
 
   // 导出列名数组，供 selectHistory 的 .select() 使用
@@ -71,6 +72,23 @@ export const getDatabase = async () => {
     } catch (_error) {
       // Column might already exist, ignore error
     }
+  }
+
+  // 添加 value_size 列（整数类型，默认值 0）
+  try {
+    await db.schema.alterTable("history").addColumn("value_size", "integer", (col) => col.defaultTo(0)).execute();
+  } catch (_error) {
+    // Column might already exist, ignore error
+  }
+
+  // 对旧记录批量回填 value_size（按类型区分）
+  try {
+    // 非图片类型：文本/文件路径等用 SQLite LENGTH 近似回填
+    await sql`UPDATE history SET value_size = LENGTH(value) WHERE (value_size IS NULL OR value_size = 0) AND type != 'image'`.execute(db);
+    // 图片类型：唯一真正落盘的类型，用 count 列的真实物理大小
+    await sql`UPDATE history SET value_size = count WHERE (value_size IS NULL OR value_size = 0) AND type = 'image'`.execute(db);
+  } catch (_error) {
+    // Ignore if backfill fails
   }
 
   return db;

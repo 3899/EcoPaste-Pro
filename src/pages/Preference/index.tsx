@@ -23,8 +23,8 @@ import { saveStore } from "@/utils/store";
 import About from "./components/About";
 import Clipboard from "./components/Clipboard";
 import General from "./components/General";
-import History from "./components/History";
 import Shortcut from "./components/Shortcut";
+import Storage from "./components/Storage";
 
 const Preference = () => {
   const { t } = useTranslation();
@@ -69,10 +69,10 @@ const Preference = () => {
         label: t("preference.menu.title.clipboard"),
       },
       {
-        content: <History />,
-        icon: "i-lucide:history",
+        content: <Storage active={activeKey === "history"} />,
+        icon: "i-lucide:hard-drive",
         key: "history",
-        label: t("preference.menu.title.history"),
+        label: t("preference.menu.title.storage"),
       },
       {
         content: <General />,
@@ -99,7 +99,7 @@ const Preference = () => {
         label: t("preference.menu.title.about"),
       },
     ];
-  }, [appearance.language]);
+  }, [appearance.language, activeKey]);
 
   const handleMenuClick = (key: string) => {
     setActiveKey(key);

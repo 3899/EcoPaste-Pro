@@ -407,7 +407,8 @@
         "backup": "数据备份",
         "clipboard": "剪贴板",
         "general": "通用设置",
-        "history": "历史记录",
+        "history": "存储空间",
+        "storage": "存储空间",
         "shortcut": "快捷键"
       }
     },
@@ -490,6 +491,44 @@
           "quick_paste": "快速粘贴"
         },
         "title": "快捷键"
+      }
+    },
+    "storage": {
+      "storage_stats": {
+        "title": "存储统计",
+        "subtitle": "各类内容空间占用明细",
+        "total_label": "总计",
+        "items": "条目",
+        "used_space": "已占用空间",
+        "records": "条记录",
+        "top_usage": "主要占用",
+        "col_type": "类型",
+        "col_count": "数量",
+        "col_size": "大小",
+        "time_range": "时间范围",
+        "scope_all": "全部",
+        "scope_favorite": "收藏",
+        "time_range_opt": {
+          "all": "全部",
+          "today": "今天",
+          "yesterday": "昨天",
+          "last_3_days": "最近3天",
+          "this_week": "本周",
+          "this_month": "本月",
+          "custom": "自定义"
+        },
+        "clean_by_type": "按类型清理",
+        "clean_hint": "选择类型标签批量清理 未收藏 的记录",
+        "clean_hint_favorite": "选择类型标签批量清理 已收藏 的记录",
+        "clean_selected": "清理选中",
+        "clean_confirm": "确定要删除选中类型的所有未收藏记录吗？",
+        "clean_confirm_favorite": "确定要删除选中类型的所有已收藏记录吗？",
+        "clean_success": "清理成功",
+        "button_cancel": "取消",
+        "button_confirm_clean": "确定删除"
+      },
+      "auto_clean": {
+        "title": "自动清理设置"
       }
     },
     "title": "偏好设置"

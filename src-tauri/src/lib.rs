@@ -29,6 +29,8 @@ fn expand_env_vars(input: String) -> String {
     result
 }
 
+
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     let app = Builder::default()

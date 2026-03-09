@@ -403,7 +403,8 @@
         "backup": "資料備份",
         "clipboard": "剪貼簿",
         "general": "通用設定",
-        "history": "歷史記錄",
+        "history": "儲存空間",
+        "storage": "儲存空間",
         "shortcut": "快捷鍵"
       }
     },
@@ -486,6 +487,40 @@
           "quick_paste": "快速貼上"
         },
         "title": "快捷鍵"
+      }
+    },
+    "storage": {
+      "storage_stats": {
+        "title": "儲存統計",
+        "subtitle": "各類內容空間佔用明細",
+        "total_label": "總計",
+        "items": "條目",
+        "used_space": "已佔用空間",
+        "records": "條記錄",
+        "top_usage": "主要佔用",
+        "col_type": "類型",
+        "col_count": "數量",
+        "col_size": "大小",
+        "time_range": "時間範圍",
+        "time_range_opt": {
+          "all": "全部",
+          "today": "今天",
+          "yesterday": "昨天",
+          "last_3_days": "最近3天",
+          "this_week": "本週",
+          "this_month": "本月",
+          "custom": "自訂"
+        },
+        "clean_by_type": "按類型清理",
+        "clean_hint": "選擇類型標籤批量清理 未收藏 的記錄",
+        "clean_selected": "清理選中",
+        "clean_confirm": "確定要刪除選中類型的所有未收藏記錄嗎？",
+        "clean_success": "清理成功",
+        "button_cancel": "取消",
+        "button_confirm_clean": "確定刪除"
+      },
+      "auto_clean": {
+        "title": "自動清理設置"
       }
     },
     "title": "偏好設定"

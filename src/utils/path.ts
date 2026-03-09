@@ -45,6 +45,13 @@ export const getSaveImagePath = () => {
 };
 
 /**
+ * 获取存储图标的路径
+ */
+export const getSaveIconPath = () => {
+  return join(getSaveDataPath(), "icons");
+};
+
+/**
  * 存储数据的目录名
  */
 export const getSaveDataDirName = () => {

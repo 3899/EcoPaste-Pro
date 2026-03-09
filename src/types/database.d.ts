@@ -18,6 +18,7 @@ export type DatabaseSchemaHistory<
   subtype?: DatabaseSchemaHistorySubtype;
   sourceAppName?: string;
   sourceAppIcon?: string;
+  value_size?: number;
 };
 
 export type DatabaseSchemaGroupId = LiteralUnion<

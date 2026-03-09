@@ -97,8 +97,11 @@ export const useClipboard = (
         let rescuedAsText = false;
         
         if (!trimmedText.includes('\n')) {
-          const { isWin } = await import("@/utils/is");
-          if (isWin) {
+          const { isURL, isEmail, isWin } = await import("@/utils/is");
+          
+          if (isURL(trimmedText) || isEmail(trimmedText)) {
+            rescuedAsText = true;
+          } else if (isWin) {
             const { isWinPathOrCommand } = await import("@/utils/winPaths");
             if (isWinPathOrCommand(trimmedText)) {
               rescuedAsText = true;
@@ -223,6 +226,14 @@ export const useClipboard = (
         state.list.unshift(data);
       }
 
+      // 精确记录 EcoPaste 因保存这条记录而实际消耗的存储空间
+      if (data.type === "image") {
+        // 图片是唯一真正落盘到本地目录的类型，取底层插件算好的物理字节大小
+        sqlData.value_size = data.count || 0;
+      } else {
+        // 其余类型（含 files 路径 JSON）只有文本存入了数据库，用 Blob 精确计算 UTF-8 字节
+        sqlData.value_size = typeof sqlData.value === 'string' ? new Blob([sqlData.value]).size : 0;
+      }
       insertHistory(sqlData);
       } finally {
         isProcessing = false;

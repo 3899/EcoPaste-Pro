@@ -83,7 +83,31 @@ Installation Guide: [Click here](https://ecopaste.cn/guide/install#linux)
 
 > This repository is a fork of [EcoPasteHub/EcoPaste](https://github.com/EcoPasteHub/EcoPaste) with the following usability improvements and update history:
 
-### M05.0 <font size="-2" color="gray">(Based on original v0.6.0-beta.3 branch)</font>
+### M05.x <font size="-2" color="gray">(Based on original v0.6.0-beta.3 branch)</font>
+
+#### M05.1
+
+##### ✨ New Features (A New Space Manager Experience)
+- **📊 Panoramic Chart View**
+  - **📋 Multi-Dimensional Storage Stats Panel**: Added 12 core content types storage stats, visually displaying space usage; supports independent "All/Favorites" switching, allowing separate inspection of storage data for favorite records.
+  - **⚡ Ultra-High-Performance Stats Engine**: Refactored the physical volume tracing and dashboard stats logic. Replaced blocking Disk IO traversal with unified memory-level database queries, allowing instant loading even with tens of thousands of records and hundreds of GBs of data.
+  - **📈 Dynamic Visual Balancing Algorithm**: To handle significantly varying "long-tail data," adopted a square-root smoothing formula that ensures intuitive contrast while preventing small files from becoming "invisible."
+  - **🎯 Panoramic Data Pass-Through Interaction**: Optimized the bar chart interaction area. Hovering now reveals a floating card in real-time displaying the corresponding correct item count and accurate volume.
+- **⏳ Flexible Timeline Navigation**
+  - **⏰ Global Intelligent Time Filtering**: Built-in time filter with support for `Today`, `Yesterday`, `Last 3 Days`, `This Week`, `This Month`, and `Custom` date ranges, instantly rendering storage data for the specified period.
+  - **🔗 Fully Merged Module Response**: Time filtering perfectly synchronizes with statistical charts and detail lists. Switching times updates the visualization of data accumulations and trends instantly.
+- **🧹 Intelligent Anti-Mistake Cleanup**
+  - **🗑️ Typological Accurate Cleanup**: Supports multi-selection by content type for 1-click batch cleanup of `Unfavorited` / `Favorited` redundant history data.
+  - **🖼️ Image Deep Correlated Cleanup**: When cleaning up images, alongside obliterating database fingerprints, the system now simultaneously supports "synchronous deletion of local image files," genuinely freeing disk space and perfectly complementing custom storage paths.
+
+##### 🐞 Bug Fixes
+- **🌐 Web Link Identification Fix**: Optimized clipboard type judgment logic. URL/email addresses copied in plain text format will be forcibly recognized as plain text, resolving the issue where styled links copied from web pages were misidentified as HTML.
+- **🎨 Color Code Misclassification Fix**: Refactored color recognition validation engine to only validate standard color values, preventing ordinary English words (e.g., `Tan`, `azure`, etc.) from being falsely recognized and highlighted.
+
+##### 🐛 Upstream Bug Fixes
+- **📂 File Icon Path Isolation Fix**: Deeply integrated the `tauri-plugin-fs-pro` underlying API. File icons will now precisely save into the user's custom directory and no longer leave redundant files in the system's default `AppData` path.
+
+#### M05.0
 
 #### ✨ New Features
 - **📅 Multi-Dimensional Filtering**: Added combined "Date + Content Type" multi-dimensional filtering. Click the funnel icon at the top to open the filter panel. Supports three independent date filter modes — by day, by month, and custom date range — along with multi-select for 12 content type tags, enabling efficient and precise content inspection.
@@ -103,7 +127,7 @@ Installation Guide: [Click here](https://ecopaste.cn/guide/install#linux)
 - **📋 JavaScript Code Misclassification**: Refactored the underlying code language detection engine, elevating JavaScript detection to the highest priority with targeted strong feature keywords for frontend build artifacts. Removed generic operators (`<<`, `>>`) from C++ detection rules that conflicted with JS shift operations, and added a JS feature "reverse kill" validation mechanism, completely resolving the persistent issue of obfuscated/minified frontend JS production code being misidentified as "Code (C++)".
 - **🗑️ Legacy Garbage Cleanup**: Performed deep comparison and thorough cleanup of residual temporary files from deprecated mounts, eliminating redundant data interference with future feature refactoring from the root.
 
-#### 🐞 Upstream Bug Fixes
+#### 🐛 Upstream Bug Fixes
 - **👁️ Full-Width Item Header Release**: Removed the original UI behavior of forcibly reserving fixed width for invisible action buttons on the right side. In unselected state, the record header attribute bar now achieves 100% full-width display, providing more content space and more complete information presentation.
 
 ### M04.x <font size="-2" color="gray">(Based on original v0.6.0-beta.3 branch)</font>
