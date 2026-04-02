@@ -1,11 +1,27 @@
+import {
+  closestCenter,
+  DndContext,
+  type DragEndEvent,
+  PointerSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  useSortable,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import { useBoolean, useCreation } from "ahooks";
-import { Button, Flex, Modal, Transfer, Tree, type TreeProps } from "antd";
+import { Button, Checkbox, Flex, Modal, Transfer } from "antd";
 import type { TransferCustomListBodyProps } from "antd/lib/transfer/list";
 import { useTranslation } from "react-i18next";
 import { useSnapshot } from "valtio";
 import ProListItem from "@/components/ProListItem";
 import UnoIcon from "@/components/UnoIcon";
 import { clipboardStore } from "@/stores/clipboard";
+import { transferStore } from "@/stores/transfer";
 import type { OperationButton as Key } from "@/types/store";
 
 interface TransferData {
@@ -74,7 +90,80 @@ export const transferData: TransferData[] = [
     key: "runCommand",
     title: "clipboard.button.context_menu.run_command",
   },
+  {
+    icon: "i-lucide:send",
+    key: "push",
+    title:
+      "preference.clipboard.content_settings.label.operation_button_option.push",
+  },
 ];
+
+interface SortableItemProps {
+  item: TransferData;
+  onItemSelect: (key: string, selected: boolean) => void;
+  renderTransferData: (data: TransferData) => React.ReactNode;
+  selectedKeys: React.Key[];
+}
+
+const SortableItem = ({
+  item,
+  selectedKeys,
+  onItemSelect,
+  renderTransferData,
+}: SortableItemProps) => {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id: item.key });
+
+  const style = {
+    position: "relative" as const,
+    transform: CSS.Transform.toString(transform),
+    transition,
+    zIndex: isDragging ? 10 : 1,
+  };
+
+  return (
+    <Flex
+      align="center"
+      className={
+        isDragging
+          ? "bg-color-4 shadow-sm"
+          : "cursor-grab outline-none hover:bg-color-4"
+      }
+      gap={8}
+      ref={setNodeRef}
+      style={{
+        borderRadius: 6,
+        padding: "4px 8px",
+        touchAction: "none",
+        ...style,
+      }}
+      {...attributes}
+      {...listeners}
+    >
+      <UnoIcon
+        className="cursor-grab text-color-3"
+        name="i-lucide:grip-vertical"
+        size={14}
+      />
+      <div
+        className="ant-tree-checkbox ant-checkbox-wrapper m-r-1 flex-shrink-0 cursor-pointer"
+        onPointerDown={(e) => e.stopPropagation()}
+      >
+        <Checkbox
+          checked={selectedKeys.includes(item.key)}
+          onChange={(e) => onItemSelect(item.key, e.target.checked)}
+        />
+      </div>
+      {renderTransferData(item)}
+    </Flex>
+  );
+};
 
 const OperationButton = () => {
   const { content } = useSnapshot(clipboardStore);
@@ -87,27 +176,39 @@ const OperationButton = () => {
     });
   }, [content.operationButtons]);
 
-  const handleDrop: TreeProps["onDrop"] = (info) => {
-    const { dragNode, node, dropPosition } = info;
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 5,
+      },
+    }),
+  );
 
-    const getIndex = (pos: string) => pos.split("-").map(Number)[1];
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
 
-    const dragIndex = getIndex(dragNode.pos);
-    let dropIndex = getIndex(node.pos);
+    if (over && active.id !== over.id) {
+      const oldIndex = content.operationButtons.findIndex(
+        (key) => key === active.id,
+      );
+      const newIndex = content.operationButtons.findIndex(
+        (key) => key === over.id,
+      );
 
-    if (dragIndex > dropIndex && dropPosition > 0) {
-      dropIndex++;
+      const newButtons = arrayMove(
+        content.operationButtons,
+        oldIndex,
+        newIndex,
+      );
+      clipboardStore.content.operationButtons = newButtons as Key[];
     }
-
-    const buttons = clipboardStore.content.operationButtons;
-    buttons.splice(dropIndex, 0, ...buttons.splice(dragIndex, 1));
   };
 
   const renderTransferData = (data: TransferData) => {
     const { key, icon, title } = data;
 
     return (
-      <Flex align="center" className="max-w-31.25" gap={4} key={key}>
+      <Flex align="center" className="max-w-31.25 flex-1" gap={4} key={key}>
         <UnoIcon name={icon} />
         <span className="truncate">{t(title)}</span>
       </Flex>
@@ -119,22 +220,28 @@ const OperationButton = () => {
 
     if (direction === "right" && content.operationButtons?.length) {
       return (
-        <Tree
-          blockNode
-          checkable
-          checkedKeys={selectedKeys}
-          className="[&_.ant-tree-switcher]:hidden"
-          draggable
-          onCheck={(_, info) => {
-            const { key } = info.node;
-
-            onItemSelect(key, !selectedKeys?.includes(key));
-          }}
-          onDrop={handleDrop}
-          selectable={false}
-          titleRender={renderTransferData}
-          treeData={treeData}
-        />
+        <DndContext
+          collisionDetection={closestCenter}
+          onDragEnd={handleDragEnd}
+          sensors={sensors}
+        >
+          <div className="flex flex-col gap-1 p-1">
+            <SortableContext
+              items={treeData.map((item) => item.key)}
+              strategy={verticalListSortingStrategy}
+            >
+              {treeData.map((item) => (
+                <SortableItem
+                  item={item}
+                  key={item.key}
+                  onItemSelect={onItemSelect}
+                  renderTransferData={renderTransferData}
+                  selectedKeys={selectedKeys}
+                />
+              ))}
+            </SortableContext>
+          </div>
+        </DndContext>
       );
     }
   };
@@ -165,15 +272,15 @@ const OperationButton = () => {
         title={t(
           "preference.clipboard.content_settings.label.custom_operation_button_title",
         )}
-        width={448}
+        width={520}
       >
         <Transfer
-          dataSource={transferData}
+          dataSource={transferData.filter(d => d.key !== "push" || transferStore.push.masterEnabled)}
           onChange={(keys) => {
-            clipboardStore.content.operationButtons = keys as Key[];
+            clipboardStore.content.operationButtons = keys as any[];
           }}
           render={renderTransferData}
-          targetKeys={content.operationButtons}
+          targetKeys={content.operationButtons as any[]}
         >
           {renderTree}
         </Transfer>

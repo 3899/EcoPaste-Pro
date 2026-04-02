@@ -34,6 +34,10 @@ export const LISTEN_KEY = {
   SHOW_WINDOW: "show-window",
   STORE_CHANGED: "store-changed",
   TOGGLE_LISTEN_CLIPBOARD: "toggle-listen-clipboard",
+  TRANSFER_AUTOCOPY_GUARD: "transfer-autocopy-guard",
+  TRANSFER_RECEIVED: "transfer-received",
+  TRANSFER_LIST_UPDATED: "transfer-list-updated",
+  TRANSFER_PUSH_RESULT: "transfer-push-result",
   UPDATE_APP: "update-app",
 };
 

@@ -16,6 +16,7 @@
         "paste_as_hex": "HEX に変換して貼り付け",
         "paste_as_path": "パスとして貼り付ける",
         "paste_as_plain_text": "プレーンテキストとして貼り付け",
+        "push": "プッシュ",
         "paste_as_rgb": "RGB に変換して貼り付け",
         "paste_selection": "選択部分を貼り付け",
         "preview_image": "画像プレビュー",
@@ -173,7 +174,8 @@
             "notes": "メモ",
             "open_browser": "ブラウザで開く",
             "paste_plain": "プレーンテキストとして貼り付け",
-            "preview_image": "画像プレビュー"
+            "preview_image": "画像プレビュー",
+            "push": "プッシュ"
           },
           "paste_as_plain": "プレーンテキストとして貼り付ける",
           "record_source_app": "アプリのソースを記録",
@@ -428,7 +430,8 @@
         "general": "共通設定",
         "history": "ストレージ",
         "shortcut": "ショートカットキー",
-        "storage": "ストレージ"
+        "storage": "ストレージ",
+        "transfer": "データ同期"
       }
     },
     "settings": {
@@ -546,6 +549,103 @@
         "used_space": "使用中の容量"
       }
     },
-    "title": "環境設定"
+    "title": "環境設定",
+    "transfer": {
+      "basic_title": "基本設定",
+      "tabs": {
+        "push": "データ送信",
+        "receive": "データ受信"
+      },
+      "push": {
+        "section_master": "プッシュ設定",
+        "master_title": "送信サービスを有効にする",
+        "master_desc": "ローカルクリップボードの記録を外部デバイスに送信することを許可する",
+        "start_success": "送信サービスが開始されました",
+        "section_auto": "自動プッシュ",
+        "auto_title": "自動プッシュ",
+        "auto_desc": "クリップボードの変更を監視し、新しいコンテンツを自動的にプッシュします",
+        "auto_off": "オフ",
+        "auto_favorites": "お気に入りのみ",
+        "auto_custom": "カスタム",
+        "auto_custom_hint": "特定のデータ形式を選択または除外",
+        "select_all": "すべて選択",
+        "clear_all": "クリア",
+        "section_channel": "プッシュチャンネル",
+        "channel_desc": "複数のチャンネルを同時に有効化でき、すべての有効な送信先へ並行して送信します",
+        "channel_enabled": "有効",
+        "channel_disabled": "未有効",
+        "test_tooltip": "選択中のプッシュチャンネルをテスト",
+        "test_btn": "テスト",
+        "test_success": "プッシュテスト成功！通知を確認してください",
+        "bark_desc": "iOS 向けに最適化された優れた体験",
+        "webhook_desc": "Node-RED、Slack、DingTalk などと連携",
+        "bark": {
+          "url_label": "サーバー URL",
+          "key_label": "デバイスキー",
+          "key_placeholder": "Bark Key を貼り付け",
+          "auto_copy": "スマホ側自動コピー",
+          "auto_copy_desc": "プッシュ受信時に iOS が自動的にクリップボードに書き込む",
+          "archive": "履歴を保持",
+          "archive_desc": "プッシュ記録を Bark アプリに永久保存",
+          "level": "通知レベル",
+          "level_desc": "通知モードを制御：即時画面オンまたはサイレント配信",
+          "level_active": "通常 (Active)",
+          "level_time_sensitive": "時間的制約 (TimeSensitive)",
+          "level_passive": "サイレント (Passive)",
+          "group_mode": "タグとグループのマッピング",
+          "group_mode_desc": "コンテンツタイプタグに基づいて Bark グループを動的に割り当て",
+          "group_disabled": "オフ",
+          "group_auto": "タグと同じ",
+          "group_custom": "カスタムマッピング"
+        },
+        "webhook": {
+          "url_label": "Webhook URL",
+          "headers_label": "カスタムヘッダー（任意）",
+          "headers_hint": "明示的な認証のみ、空白でスキップ",
+          "template_label": "ペイロードテンプレート (JSON)",
+          "vars_label": "変数：",
+          "var_content": "コンテンツ",
+          "var_type": "タイプラベル",
+          "var_timestamp": "タイムスタンプ",
+          "var_source": "ソース",
+          "var_length": "長さ"
+        }
+      },
+      "receive": {
+        "section_master": "受信設定",
+        "master_title": "受信サービスを有効にする",
+        "master_desc": "ローカル HTTP サーバーを起動して他のデバイスからのクリップボードコンテンツを受信",
+        "start_success": "受信サービスが開始されました",
+        "section_config": "サービス設定",
+        "port_label": "サービスポート",
+        "lan_ip_label": "LAN IP アドレス",
+        "lan_ip_hint": "現在の端末のローカルネットワーク IP を自動取得し、同一 LAN 内の端末接続に使用します。",
+        "refresh_lan_ip": "更新",
+        "lan_ip_unchanged": "IP アドレスは変更されていません",
+        "lan_ip_refresh_success": "更新成功。新しい IP は {{0}} です",
+        "port_confirm": "ポートを適用",
+        "port_cancel": "変更を取り消す",
+        "port_apply_success": "受信サービスをポート {{0}} に切り替えました",
+        "port_saved_success": "ポートを {{0}} に保存しました",
+        "token_label": "API トークン",
+        "token_placeholder": "セキュリティのために推奨",
+        "tunnel_label": "公開アクセス先",
+        "tunnel_hint": "この端末の公開または仮想 LAN 上のアドレス/ドメイン。IPv6 / FRP / Tailscale に対応",
+        "section_behavior": "受信動作",
+        "auto_copy": "クリップボードに自動書き込み",
+        "auto_copy_desc": "受信データを Windows クリップボードに即座に書き込んで貼り付け可能に",
+        "section_url": "送信側 POST URL",
+        "url_local": "LAN:",
+        "url_public": "公開:",
+        "url_local_access": "LAN アクセス",
+        "url_public_access": "公開アクセス",
+        "card_title": "API エンドポイント",
+        "status_listening": "Listening",
+        "copy_url": "URLをコピー",
+        "copied": "コピーしました",
+        "not_configured": "未設定",
+        "not_configured_public": "公開アクセス先が未設定です"
+      }
+    }
   }
 }

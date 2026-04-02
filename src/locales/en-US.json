@@ -16,6 +16,7 @@
         "paste_as_hex": "Convert to HEX and Paste",
         "paste_as_path": "Paste As Path",
         "paste_as_plain_text": "Paste As Plain Text",
+        "push": "Push",
         "paste_as_rgb": "Convert to RGB and Paste",
         "paste_selection": "Paste Selection",
         "preview_image": "Preview Image",
@@ -176,7 +177,8 @@
             "notes": "Note",
             "open_browser": "Open in Browser",
             "paste_plain": "Paste as Plain Text",
-            "preview_image": "Preview Image"
+            "preview_image": "Preview Image",
+            "push": "Push"
           },
           "paste_as_plain": "Paste as Plain Text",
           "record_source_app": "Record Source App",
@@ -431,7 +433,8 @@
         "general": "General",
         "history": "Storage",
         "shortcut": "Shortcuts",
-        "storage": "Storage"
+        "storage": "Storage",
+        "transfer": "Data Sync"
       }
     },
     "settings": {
@@ -553,6 +556,103 @@
         "used_space": "Used Space"
       }
     },
-    "title": "Preferences"
+    "title": "Preferences",
+    "transfer": {
+      "basic_title": "Basic Config",
+      "tabs": {
+        "push": "Push Data",
+        "receive": "Receive Data"
+      },
+      "push": {
+        "section_master": "Push Switch",
+        "master_title": "Enable Push Service",
+        "master_desc": "Allow pushing local clipboard records to external devices",
+        "start_success": "Push service started",
+        "section_auto": "Auto Push",
+        "auto_title": "Auto Push",
+        "auto_desc": "Listen for clipboard changes and automatically push new content. Enable with caution",
+        "auto_off": "Off",
+        "auto_favorites": "Favorites Only",
+        "auto_custom": "Custom",
+        "auto_custom_hint": "Click to include or exclude specific data types",
+        "select_all": "Select All",
+        "clear_all": "Clear",
+        "section_channel": "Push Channel",
+        "channel_desc": "Enable multiple channels at the same time and send data to all enabled endpoints in parallel",
+        "channel_enabled": "Enabled",
+        "channel_disabled": "Not enabled",
+        "test_tooltip": "Test the currently selected push channel",
+        "test_btn": "Test",
+        "test_success": "Push test successful! Check your phone notifications",
+        "bark_desc": "Deeply customized for iOS, excellent experience",
+        "webhook_desc": "Integrate with Node-RED, Slack, DingTalk, etc.",
+        "bark": {
+          "url_label": "Server URL",
+          "key_label": "Device Key",
+          "key_placeholder": "Paste Bark Key",
+          "auto_copy": "Auto Copy on Phone",
+          "auto_copy_desc": "iOS auto-copies to clipboard when push is received",
+          "archive": "Keep History",
+          "archive_desc": "Permanently save push records in Bark App",
+          "level": "Notification Level",
+          "level_desc": "Control notification mode: instant screen-on or silent delivery",
+          "level_active": "Normal (Active)",
+          "level_time_sensitive": "Time Sensitive",
+          "level_passive": "Silent (Passive)",
+          "group_mode": "Content Tag & Group Mapping",
+          "group_mode_desc": "Dynamically assign Bark groups by content type tag",
+          "group_disabled": "Off",
+          "group_auto": "Same as Tag",
+          "group_custom": "Custom Mapping"
+        },
+        "webhook": {
+          "url_label": "Webhook URL",
+          "headers_label": "Custom Headers (Optional)",
+          "headers_hint": "For explicit authentication only, leave blank to skip",
+          "template_label": "Payload Template (JSON)",
+          "vars_label": "Variables:",
+          "var_content": "Content",
+          "var_type": "Type Tag",
+          "var_timestamp": "Timestamp",
+          "var_source": "Source",
+          "var_length": "Length"
+        }
+      },
+      "receive": {
+        "section_master": "Receive Switch",
+        "master_title": "Enable Receive Service",
+        "master_desc": "Start a local HTTP server to receive clipboard content from other devices",
+        "start_success": "Receive service started",
+        "section_config": "Service Config",
+        "port_label": "Service Port",
+        "lan_ip_label": "LAN IP Address",
+        "lan_ip_hint": "Automatically detect the current device's local network address for other devices on the same LAN to connect.",
+        "refresh_lan_ip": "Refresh",
+        "lan_ip_unchanged": "IP address unchanged",
+        "lan_ip_refresh_success": "Refresh successful! New IP: {{0}}",
+        "port_confirm": "Apply port",
+        "port_cancel": "Cancel change",
+        "port_apply_success": "Receive service switched to port {{0}}",
+        "port_saved_success": "Port saved as {{0}}",
+        "token_label": "API Token",
+        "token_placeholder": "Recommended for security",
+        "tunnel_label": "Public Access Address",
+        "tunnel_hint": "Public or virtual LAN address/domain of this device, supports IPv6 / FRP / Tailscale",
+        "section_behavior": "Receive Behavior",
+        "auto_copy": "Auto Write to Clipboard",
+        "auto_copy_desc": "Immediately write received data to Windows clipboard for pasting",
+        "section_url": "Sender POST URL",
+        "url_local": "LAN:",
+        "url_public": "Public:",
+        "url_local_access": "LAN Access",
+        "url_public_access": "Public Access",
+        "card_title": "API Endpoint",
+        "status_listening": "Listening",
+        "copy_url": "Copy URL",
+        "copied": "Copied",
+        "not_configured": "Not Configured",
+        "not_configured_public": "No public access address configured"
+      }
+    }
   }
 }

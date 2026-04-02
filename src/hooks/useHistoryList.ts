@@ -183,6 +183,7 @@ export const useHistoryList = (options: Options) => {
   };
 
   useTauriListen(LISTEN_KEY.REFRESH_CLIPBOARD_LIST, reload);
+  useTauriListen(LISTEN_KEY.TRANSFER_LIST_UPDATED, reload);
 
   useAsyncEffect(async () => {
     await reload();

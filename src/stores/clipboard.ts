@@ -20,9 +20,9 @@ export const clipboardStore = proxy<ClipboardStore>({
     filesDisplayLines: 3,
     imageDisplayHeight: 100,
     operationButtons: [
-      "openBrowser",
       "previewImage",
       "openFolder",
+      "openBrowser",
       "runCommand",
       "edit",
       "pastePlain",

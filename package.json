@@ -5,7 +5,7 @@
 		"name": "ayangweb",
 		"email": "ayangweb@foxmail.com"
 	},
-	"version": "0.6.0-beta.3-Pro.5.3",
+	"version": "0.6.0-beta.3-Pro.5.4",
 	"type": "module",
 	"scripts": {
 		"dev": "run-s build:icon dev:vite",
@@ -32,6 +32,9 @@
 		"@codemirror/lang-python": "^6.2.1",
 		"@codemirror/lang-xml": "^6.1.0",
 		"@codemirror/view": "^6.39.15",
+		"@dnd-kit/core": "^6.3.1",
+		"@dnd-kit/sortable": "^10.0.0",
+		"@dnd-kit/utilities": "^3.2.2",
 		"@fsegurai/codemirror-theme-vscode-dark": "^6.2.4",
 		"@fsegurai/codemirror-theme-vscode-light": "^6.2.4",
 		"@tauri-apps/api": "^2.8.0",

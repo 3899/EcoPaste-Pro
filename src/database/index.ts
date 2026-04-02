@@ -60,6 +60,11 @@ export const getDatabase = async () => {
       name: "value_size",
       type: "integer",
     },
+    {
+      modifier: (col) => col.defaultTo(0),
+      name: "isFromSync",
+      type: "integer",
+    },
   ];
 
   // 导出列名数组，供 selectHistory 的 .select() 使用
@@ -87,6 +92,16 @@ export const getDatabase = async () => {
     await db.schema
       .alterTable("history")
       .addColumn("value_size", "integer", (col) => col.defaultTo(0))
+      .execute();
+  } catch (_error) {
+    // Column might already exist, ignore error
+  }
+
+  // 添加 isFromSync 列（整数类型，默认值 0，标记从外部设备同步过来的内容）
+  try {
+    await db.schema
+      .alterTable("history")
+      .addColumn("isFromSync", "integer", (col) => col.defaultTo(0))
       .execute();
   } catch (_error) {
     // Column might already exist, ignore error

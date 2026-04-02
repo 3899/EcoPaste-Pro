@@ -12,7 +12,7 @@ import { useImmediateKey } from "@/hooks/useImmediateKey";
 import { useRegister } from "@/hooks/useRegister";
 import { useSubscribeKey } from "@/hooks/useSubscribeKey";
 import { useTauriListen } from "@/hooks/useTauriListen";
-import { pasteToClipboard } from "@/plugins/clipboard";
+import { markInternalClipboardWrite, pasteToClipboard } from "@/plugins/clipboard";
 import {
   showTaskbarIcon,
   showWindow,
@@ -20,6 +20,7 @@ import {
 } from "@/plugins/window";
 import { clipboardStore } from "@/stores/clipboard";
 import { globalStore } from "@/stores/global";
+import { transferStore } from "@/stores/transfer";
 import type {
   DatabaseSchemaGroupId,
   DatabaseSchemaHistory,
@@ -81,47 +82,41 @@ const Main = () => {
     },
   });
 
-  // 任务栏图标的显示与隐藏
   useImmediateKey(globalStore.app, "showTaskbarIcon", showTaskbarIcon);
 
-  // 同步配置项
   useTauriListen<Store>(LISTEN_KEY.STORE_CHANGED, ({ payload }) => {
     strictDeepAssign(globalStore, payload.globalStore);
     strictDeepAssign(clipboardStore, payload.clipboardStore);
+    if (payload.transferStore) {
+      strictDeepAssign(transferStore, payload.transferStore);
+    }
   });
 
-  // 窗口显示与隐藏
   useRegister(toggleWindowVisible, [shortcut.clipboard]);
 
-  // 打开偏好设置窗口
   useKeyPress(PRESET_SHORTCUT.OPEN_PREFERENCES, () => {
     showWindow("preference");
   });
 
-  // 设置快捷粘贴的快捷键
   const setQuickPasteKeys = () => {
     const { enable, value } = globalStore.shortcut.quickPaste;
 
     if (!enable) {
       state.quickPasteKeys = [];
-
       return;
     }
 
     state.quickPasteKeys = range(1, 10).map((item) => [value, item].join("+"));
   };
 
-  // 监听快速粘贴的启用状态变更
   useImmediateKey(globalStore.shortcut.quickPaste, "enable", () => {
     setQuickPasteKeys();
   });
 
-  // 监听快速粘贴的快捷键变更
   useSubscribeKey(globalStore.shortcut.quickPaste, "value", () => {
     setQuickPasteKeys();
   });
 
-  // 切换剪贴板监听状态
   useTauriListen<boolean>(LISTEN_KEY.TOGGLE_LISTEN_CLIPBOARD, ({ payload }) => {
     if (payload) {
       startListening();
@@ -130,7 +125,10 @@ const Main = () => {
     }
   });
 
-  // 监听粘贴为纯文本的快捷键
+  useTauriListen<string>(LISTEN_KEY.TRANSFER_AUTOCOPY_GUARD, ({ payload }) => {
+    markInternalClipboardWrite(payload === "image");
+  });
+
   useRegister(
     async () => {
       const { getCurrentWebviewWindow } = await import(
@@ -155,13 +153,11 @@ const Main = () => {
     [shortcut.pastePlain],
   );
 
-  // 监听快速粘贴的快捷键
   useRegister(
     async (event) => {
       if (!globalStore.shortcut.quickPaste.enable) return;
 
       const index = Number(last(event.shortcut));
-
       const data = state.list[index - 1];
 
       pasteToClipboard(data, undefined, { pinned: state.pinned });
@@ -176,7 +172,6 @@ const Main = () => {
       }}
     >
       <Audio ref={audioRef} />
-
       {window.style === "standard" ? <StandardMode /> : <DockMode />}
     </MainContext.Provider>
   );

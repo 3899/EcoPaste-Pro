@@ -24,6 +24,7 @@ export type DatabaseSchemaHistory<
   sourceAppName?: string;
   sourceAppIcon?: string;
   value_size?: number;
+  isFromSync?: boolean;
 };
 
 export type DatabaseSchemaGroupId = LiteralUnion<

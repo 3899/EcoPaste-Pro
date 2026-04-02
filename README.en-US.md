@@ -1,5 +1,5 @@
-<a href="https://github.com/EcoPasteHub/EcoPaste">
-  <img src="https://socialify.git.ci/EcoPasteHub/EcoPaste/image?description=1&descriptionEditable=Open%20source%20clipboard%20management%20tools%20for%20Windows%2C%20MacOS%20and%20Linux(x11).&font=Source%20Code%20Pro&forks=1&issues=1&logo=https%3A%2F%2Fgithub.com%2FEcoPasteHub%2FEcoPaste%2Fblob%2Fmaster%2Fpublic%2Flogo.png%3Fraw%3Dtrue&name=1&owner=1&pattern=Floating%20Cogs&pulls=1&stargazers=1&theme=Auto" alt="EcoPaste" />
+﻿<a href="https://github.com/3899/EcoPaste-Pro">
+  <img src="https://socialify.git.ci/3899/EcoPaste-Pro/image?description=1&descriptionEditable=Open%20source%20clipboard%20management%20tools%20for%20Windows%2C%20MacOS%20and%20Linux(x11).&font=Source%20Code%20Pro&logo=https%3A%2F%2Fgithub.com%2FEcoPasteHub%2FEcoPaste%2Fblob%2Fmaster%2Fpublic%2Flogo.png%3Fraw%3Dtrue&name=1&owner=1&pattern=Floating%20Cogs&theme=Auto" alt="EcoPaste" />
 </a>
 
 <div align="center">
@@ -12,19 +12,19 @@
   <br/>
     
   <div>
-    <a href="https://github.com/EcoPasteHub/EcoPaste/releases">
+    <a href="https://github.com/3899/EcoPaste-Pro/releases">
       <img
         alt="Windows"
         src="https://img.shields.io/badge/-Windows-blue?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB0PSIxNzI2MzA1OTcxMDA2IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjE1NDgiIHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4Ij48cGF0aCBkPSJNNTI3LjI3NTU1MTYxIDk2Ljk3MTAzMDEzdjM3My45OTIxMDY2N2g0OTQuNTEzNjE5NzVWMTUuMDI2NzU3NTN6TTUyNy4yNzU1NTE2MSA5MjguMzIzNTA4MTVsNDk0LjUxMzYxOTc1IDgwLjUyMDI4MDQ5di00NTUuNjc3NDcxNjFoLTQ5NC41MTM2MTk3NXpNNC42NzA0NTEzNiA0NzAuODMzNjgyOTdINDIyLjY3Njg1OTI1VjExMC41NjM2ODE5N2wtNDE4LjAwNjQwNzg5IDY5LjI1Nzc5NzUzek00LjY3MDQ1MTM2IDg0Ni43Njc1OTcwM0w0MjIuNjc2ODU5MjUgOTE0Ljg2MDMxMDEzVjU1My4xNjYzMTcwM0g0LjY3MDQ1MTM2eiIgcC1pZD0iMTU0OSIgZmlsbD0iI2ZmZmZmZiI+PC9wYXRoPjwvc3ZnPg=="
       />
     </a >  
-    <a href="https://github.com/EcoPasteHub/EcoPaste/releases">
+    <a href="https://github.com/3899/EcoPaste-Pro/releases">
       <img
         alt="MacOS"
         src="https://img.shields.io/badge/-MacOS-black?style=flat-square&logo=apple&logoColor=white"
       />
     </a >
-    <a href="https://github.com/EcoPasteHub/EcoPaste/releases">
+    <a href="https://github.com/3899/EcoPaste-Pro/releases">
       <img 
         alt="Linux"
         src="https://img.shields.io/badge/-Linux-yellow?style=flat-square&logo=linux&logoColor=white" 
@@ -35,17 +35,17 @@
   <div>
     <a href="./LICENSE">
       <img
-        src="https://img.shields.io/github/license/EcoPasteHub/EcoPaste?style=flat-square"
+        src="https://img.shields.io/github/license/3899/EcoPaste-Pro?style=flat-square"
       />
     </a >
-    <a href="https://github.com/EcoPasteHub/EcoPaste/releases">
+    <a href="https://github.com/3899/EcoPaste-Pro/releases">
       <img
-        src="https://img.shields.io/github/package-json/v/EcoPasteHub/EcoPaste?style=flat-square"
+        src="https://img.shields.io/github/package-json/v/3899/EcoPaste-Pro?style=flat-square"
       />
     </a >
-    <a href="https://github.com/EcoPasteHub/EcoPaste/releases">
+    <a href="https://github.com/3899/EcoPaste-Pro/releases">
       <img
-        src="https://img.shields.io/github/downloads/EcoPasteHub/EcoPaste/total?style=flat-square"
+        src="https://img.shields.io/github/downloads/3899/EcoPaste-Pro/total?style=flat-square"
       />  
     </a >
   </div>
@@ -53,10 +53,18 @@
   <br/>
 
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./static/app-dark.en-US.png" />
-    <source media="(prefers-color-scheme: light)" srcset="./static/app-light.en-US.png" />
-    <img src="./static/app-light.en-US.png" />
- </picture>
+    <img src="./static/Clipboard.png" width="100%" alt="Clipboard" />
+    <br/><br/>
+    <img src="./static/Settings - Clipboard.png" width="100%" alt="Settings Clipboard" />
+    <br/><br/>
+    <img src="./static/Settings - Storage Statistics.png" width="100%" alt="Storage Statistics" />
+    <br/><br/>
+    <img src="./static/Settings - Shortcuts.png" width="100%" alt="Shortcuts" />
+    <br/><br/>
+    <img src="./static/Settings - Data Backup.png" width="100%" alt="Data Backup" />
+    <br/><br/>
+    <img src="./static/Settings - Data Sync.png" width="100%" alt="Data Sync" />
+  </picture>
 </div>
 
 ## Download
@@ -81,9 +89,32 @@ Installation Guide: [Click here](https://ecopaste.cn/guide/install#linux)
 
 ## 🚀 Fork Update History
 
-> This repository is a fork of [EcoPasteHub/EcoPaste](https://github.com/EcoPasteHub/EcoPaste) with the following usability improvements and update history:
+> This repository is a fork of [3899/EcoPaste-Pro](https://github.com/3899/EcoPaste-Pro) with the following usability improvements and update history:
 
 ### Pro.5.x <font size="-2" color="gray">(Based on the original v0.6.0-beta.3 branch)</font>
+
+#### Pro.5.4
+
+##### ✨ New Features
+- **🔄 Lightweight Data Sync Module**: Added a "Data Sync" entry in preferences, divided into "Push Data" and "Receive Data" modules.
+- **📤 Active Push from Main UI**: Added a "Push" option to the item header actions, right-click context menu, and preference action buttons. Supports explicitly pushing a single clipboard item to external devices.
+- **⚙️ Auto-Push Strategies**: Supports three modes: "Off / Favorites Only / Custom Tags". The "Favorites Only" mode auto-pushes when an item is starred, while the custom mode filters based on specific content type tags.
+- **📡 Auto-Receive Service**: Added a local HTTP local receiving interface. Supports injecting text / html / rtf / files / image into the local history, with an option to write back to the system clipboard automatically.
+- **🖼️ Image Relay Strategies**: Pushing images supports five strategies: "Temporary LAN Direct Link / Webhook Gateway / WebDAV / Local Directory Mapping / Direct Intercept".
+- **📍 Remote Source Marking**: Contents received remotely preserve the source device info and display a remote device icon in the list.
+
+##### 💫 Experience Optimizations
+- **💻 Code Preview Wrap Optimization**: Upgraded code syntax highlighting preview to a true-height crop with automatic line wrapping. Long code lines no longer cause horizontal overflow.
+- **🎨 Enhanced HTML Readability**: Added smart theme detection and automatic text contrast correction to ensure text remains legible across both light and dark themes.
+- **♻️ Sync Loop Prevention**: Added transmission write-back fingerprint protection. Prevents "auto-copy after receiving" from triggering local listeners again, eliminating duplicate db entries and redundant push loops.
+- **🖼️ Stabilized Image Reception**: Standardized incoming images by transcoding them to PNG and injecting missing size/volume metadata. Unconventional formats like SVG / HEIC / HEIF must now be converted to standard images prior to upload.
+
+##### 🏗️ Architecture Optimization
+- **🧵 Queued Push Pipeline**: Modified push operations to use asynchronous queue processing, preventing the main clipboard listening flow from being blocked.
+- **🔐 Tiered Config Storage**: Sensitive credentials are now securely stored in the system credential manager, while standard configurations fall back to the user config file.
+
+##### 🐞 Bug Fixes
+- **🧲 Action Button Config Refactor**: Fixed the issue where custom action buttons could not be reordered via drag-and-drop in the modal. Refactored the underlying drag logic to coexist perfectly with the "Drag and Drop Backup Import" functionality.
 
 #### Pro.5.3
 
@@ -281,7 +312,7 @@ Installation Guide: [Click here](https://ecopaste.cn/guide/install#linux)
 - **💾 Backup Tunnel Restored**: Re-enabled the data backup/restore entry that was hidden due to permission restrictions in the original version, ensuring stable imports and exports.
 
 #### 🔄 Auto Sync with Upstream
-- Automatically checks for updates from upstream EcoPasteHub/EcoPaste daily
+- Automatically checks for updates from upstream 3899/EcoPaste-Pro daily
 - Auto-merges and triggers builds when new versions are available
 - Creates an issue for manual resolution if merge conflicts occur
 
@@ -289,6 +320,8 @@ Installation Guide: [Click here](https://ecopaste.cn/guide/install#linux)
 
 ## Feedback
 
-1. 🔍 First, check out the [FAQ](https://ecopaste.cn/problem/macos/damage) or browse through the existing [issues](https://github.com/EcoPasteHub/EcoPaste/issues).
+1. 🔍 First, check out the [FAQ](https://ecopaste.cn/problem/macos/damage) or browse through the existing [issues](https://github.com/3899/EcoPaste-Pro/issues).
 
-2. ❓ If your issue remains unresolved, please submit a new [issue](https://github.com/EcoPasteHub/EcoPaste/issues/new/choose) with a detailed description to help us quickly identify and address the problem.
+2. ❓ If your issue remains unresolved, please submit a new [issue](https://github.com/3899/EcoPaste-Pro/issues/new/choose) with a detailed description to help us quickly identify and address the problem.
+
+

@@ -19,6 +19,8 @@ import { getClipboardTextSubtype } from "@/plugins/clipboard";
 import { clipboardStore } from "@/stores/clipboard";
 import type { DatabaseSchemaHistory } from "@/types/database";
 import { formatDate } from "@/utils/dayjs";
+import { consumeTransferEchoFingerprint } from "@/utils/transferFingerprint";
+import { buildTransferPushItem } from "@/utils/transferPushItem";
 
 export const useClipboard = (
   state: State,
@@ -195,6 +197,10 @@ export const useClipboard = (
 
         const { type, value, group, createTime } = data;
 
+        if (consumeTransferEchoFingerprint(type, value)) {
+          return;
+        }
+
         if (type === "image") {
           const fileName = await fullName(value);
 
@@ -330,6 +336,72 @@ export const useClipboard = (
               : 0;
         }
         insertHistory(sqlData);
+
+        // ── 自动推送逻辑（fire-and-forget，不阻塞剪贴板流水线） ──
+        try {
+          const { transferStore } = await import("@/stores/transfer");
+          const { masterEnabled, autoPushMode, autoPushTags } =
+            transferStore.push;
+
+          if (masterEnabled && autoPushMode !== "off") {
+            const shouldPush = (() => {
+              if (autoPushMode === "favorites_only") {
+                return false;
+              }
+              // custom: 根据标签筛选
+              const effectiveTag =
+                sqlData.subtype || sqlData.type || "text";
+              return autoPushTags.includes(effectiveTag);
+            })();
+
+            if (shouldPush) {
+              const creds = await invoke(
+                "plugin:transfer|get_transfer_config",
+              );
+              if (creds) {
+                const providers = [
+                  transferStore.push.barkEnabled ? "bark" : null,
+                  transferStore.push.webhookEnabled ? "webhook" : null,
+                ].filter(Boolean);
+
+                if (providers.length === 0) {
+                  return;
+                }
+
+                invoke("plugin:transfer|push_clipboard_item", {
+                  item: buildTransferPushItem(sqlData, {
+                    localPath:
+                      sqlData.type === "image" && typeof data.value === "string"
+                        ? data.value
+                        : null,
+                    displayName:
+                      sqlData.type === "image" && typeof sqlData.value === "string"
+                        ? sqlData.value
+                        : null,
+                  }),
+                  config: creds,
+                  nonSensitive: {
+                    providers,
+                    service_port: transferStore.receive.port,
+                    bark_level: transferStore.push.barkLevel,
+                    bark_auto_copy: transferStore.push.barkAutoCopy,
+                    bark_archive: transferStore.push.barkArchive,
+                    bark_group_mode: transferStore.push.barkGroupMode,
+                    bark_group_mapping:
+                      transferStore.push.barkGroupMapping,
+                    image_strategy: transferStore.push.imageStrategy,
+                    image_ttl_seconds: transferStore.push.imageTtlSeconds,
+                    image_local_directory: transferStore.push.imageLocalDirectory,
+                    webhook_payload_template:
+                      transferStore.push.webhookPayloadTemplate,
+                  },
+                }).catch(() => {});
+              }
+            }
+          }
+        } catch {
+          // 自动推送不应影响主流程
+        }
       } finally {
         isProcessing = false;
       }

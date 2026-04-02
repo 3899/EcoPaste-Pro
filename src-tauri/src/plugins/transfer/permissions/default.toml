@@ -1,0 +1,14 @@
+"$schema" = "schemas/schema.json"
+
+[default]
+description = "Default permissions for the transfer plugin"
+permissions = [
+  "allow-set-transfer-config",
+  "allow-get-transfer-config",
+  "allow-test-push",
+  "allow-push-clipboard-item",
+  "allow-start-receiver",
+  "allow-stop-receiver",
+  "allow-get-receiver-status",
+  "allow-get-network-info"
+]

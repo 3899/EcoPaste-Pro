@@ -19,6 +19,8 @@ const Text = forwardRef<HTMLDivElement, TextProps>((props, ref) => {
 
   const displayLines = content.displayLines || 4;
   const codeDisplayLines = content.codeDisplayLines || 5;
+  const codePreviewLineHeight = 1.625;
+  const codePreviewVerticalPadding = 1;
 
   const renderMarker = () => {
     return <Marker mark={rootState.search}>{value}</Marker>;
@@ -88,10 +90,8 @@ const Text = forwardRef<HTMLDivElement, TextProps>((props, ref) => {
       if (expanded) return {};
 
       return {
-        display: "-webkit-box",
+        maxHeight: `calc(${codeDisplayLines} * ${codePreviewLineHeight}em + ${codePreviewVerticalPadding}rem)`,
         overflow: "hidden",
-        WebkitBoxOrient: "vertical",
-        WebkitLineClamp: codeDisplayLines,
       };
     }
 

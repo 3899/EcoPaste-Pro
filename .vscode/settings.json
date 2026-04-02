@@ -18,5 +18,5 @@
   ],
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "workbench.colorTheme": "Default Light Modern"
+  "workbench.colorTheme": "Light Modern"
 }

@@ -1,0 +1,35 @@
+[package]
+name = "tauri-plugin-transfer"
+version = "0.1.0"
+authors = []
+description = "EcoPaste cross-device clipboard transfer plugin"
+edition = "2021"
+rust-version = "1.77.2"
+links = "tauri-plugin-transfer"
+
+[dependencies]
+tauri.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+log.workspace = true
+keyring = "2"
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json", "multipart"] }
+tokio = { version = "1", features = ["fs", "rt", "macros", "time", "net", "sync"] }
+tokio-util = { version = "0.7", features = ["rt"] }
+axum = { version = "0.7", features = ["multipart"] }
+rusqlite = { version = "0.32", features = ["bundled"] }
+nanoid = "0.4"
+
+chrono = "0.4"
+encoding_rs = "0.8"
+ipconfig = "0.3"
+mime_guess = "2"
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "gif", "webp", "bmp", "ico", "tiff", "avif"] }
+regex = "1"
+tauri-plugin-clipboard-x = "2"
+
+[build-dependencies]
+tauri-plugin.workspace = true
+
+[features]
+cargo-clippy = []

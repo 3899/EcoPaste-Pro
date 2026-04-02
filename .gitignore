@@ -15,6 +15,10 @@ auto-imports.d.ts
 *.patch
 /target/
 
+# Debug / cargo check output
+check.json
+check_output.txt
+
 # Editor directories and files
 .idea
 .DS_Store

@@ -40,6 +40,20 @@ html {
   overflow-wrap: anywhere;
 }
 
+.syntax-highlighter-preview,
+.syntax-highlighter-preview > pre,
+.syntax-highlighter-preview > pre > code,
+.syntax-highlighter-preview .line {
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+
+.syntax-highlighter-preview > pre {
+  overflow-x: hidden;
+}
+
 .safe-html table {
   border-collapse: collapse;
   border-spacing: 0;

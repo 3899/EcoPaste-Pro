@@ -16,6 +16,7 @@
         "paste_as_hex": "转为 HEX 并粘贴",
         "paste_as_path": "粘贴为路径",
         "paste_as_plain_text": "粘贴为纯文本",
+        "push": "推送",
         "paste_as_rgb": "转为 RGB 并粘贴",
         "paste_selection": "粘贴选中内容",
         "preview_image": "查看图片",
@@ -184,7 +185,8 @@
             "notes": "备注",
             "open_browser": "在浏览器访问",
             "paste_plain": "粘贴为纯文本",
-            "preview_image": "查看图片"
+            "preview_image": "查看图片",
+            "push": "推送"
           },
           "paste_as_plain": "粘贴为纯文本",
           "record_source_app": "记录应用来源",
@@ -443,7 +445,8 @@
         "general": "通用设置",
         "history": "存储空间",
         "shortcut": "快捷键",
-        "storage": "存储空间"
+        "storage": "存储空间",
+        "transfer": "数据同步"
       }
     },
     "settings": {
@@ -565,6 +568,104 @@
         "used_space": "已占用空间"
       }
     },
-    "title": "偏好设置"
+    "title": "偏好设置",
+    "transfer": {
+      "basic_title": "基础配置",
+      "tabs": {
+        "push": "推送数据",
+        "receive": "接收数据"
+      },
+      "group_title": "数据互传",
+      "push": {
+        "section_master": "推送开关",
+        "master_title": "启用推送服务",
+        "master_desc": "允许将本地剪贴板记录主动发送至外部设备",
+        "start_success": "推送服务已启动",
+        "section_auto": "自动推送",
+        "auto_title": "自动推送",
+        "auto_desc": "监听剪贴板变化，一旦复制新内容将立即自动推送，需谨慎开启",
+        "auto_off": "关闭",
+        "auto_favorites": "仅收藏",
+        "auto_custom": "自定义标签",
+        "auto_custom_hint": "点击选中或排除特定格式的数据",
+        "select_all": "全选",
+        "clear_all": "清空",
+        "section_channel": "推送通道",
+        "channel_desc": "可同时开启多个通道，数据将并发推送至所有开启的终端",
+        "channel_enabled": "已启用",
+        "channel_disabled": "未启用",
+        "test_tooltip": "测试当前选中的推送通道",
+        "test_btn": "检测",
+        "test_success": "推送测试成功！请检查手机通知",
+        "bark_desc": "专为 iOS 深度定制，体验极佳",
+        "webhook_desc": "对接 Node-RED、企微、钉钉等第三方服务",
+        "bark": {
+          "url_label": "服务器地址 (URL)",
+          "key_label": "设备密钥 (Key)",
+          "key_placeholder": "粘贴 Bark Key",
+          "auto_copy": "手机端自动复制",
+          "auto_copy_desc": "收到推送时 iOS 自动写入剪贴板",
+          "archive": "保留历史记录",
+          "archive_desc": "将推送记录永久保存在手机 Bark App 内",
+          "level": "时效性策略",
+          "level_desc": "控制手机通知模式，支持即时亮屏通知或静默送达",
+          "level_active": "普通提醒",
+          "level_time_sensitive": "强制突破",
+          "level_passive": "完全静默",
+          "group_mode": "内容标签与分组映射",
+          "group_mode_desc": "根据剪贴板内容类型标签动态分配 Bark 分组",
+          "group_disabled": "关闭",
+          "group_auto": "与标签同名",
+          "group_custom": "自定义映射"
+        },
+        "webhook": {
+          "url_label": "请求地址 (Webhook URL)",
+          "headers_label": "高级请求头 (Headers)",
+          "headers_hint": "仅用于显式鉴权，留空不发，可选",
+          "template_label": "Payload 模板 (JSON)",
+          "vars_label": "支持变量：",
+          "var_content": "剪贴板内容",
+          "var_type": "类型标签",
+          "var_timestamp": "时间戳",
+          "var_source": "来源",
+          "var_length": "内容长度"
+        }
+      },
+      "receive": {
+        "section_master": "接收开关",
+        "master_title": "启用自动接收服务",
+        "master_desc": "自动接收其他设备写入的剪贴板内容",
+        "start_success": "接收服务已启动",
+        "section_config": "服务配置",
+        "port_label": "服务监听端口 (Port)",
+        "lan_ip_label": "局域网 IP 地址",
+        "lan_ip_hint": "系统自动获取当前设备的内网地址，供同局域网设备连接使用",
+        "refresh_lan_ip": "刷新",
+        "lan_ip_unchanged": "IP 地址未变化",
+        "lan_ip_refresh_success": "刷新成功！新 IP 为 {{0}}",
+        "port_confirm": "确认端口",
+        "port_cancel": "取消修改",
+        "port_apply_success": "接收服务已切换到 {{0}} 端口",
+        "port_saved_success": "端口已保存为 {{0}}",
+        "token_label": "接口安全鉴权 (Token)",
+        "token_placeholder": "防恶意请求，推荐配置",
+        "tunnel_label": "公网访问地址",
+        "tunnel_hint": "本机在公网或虚拟局域网中的地址或域名，支持 IPv6 / FRP / Tailscale 等方式",
+        "section_behavior": "接收行为",
+        "auto_copy": "自动写入系统剪贴板",
+        "auto_copy_desc": "接收到数据后，立刻将其写入 Windows 剪贴板供随时粘贴",
+        "section_url": "发送端 POST 地址",
+        "url_local": "内网直连:",
+        "url_public": "公网直连:",
+        "url_local_access": "内网访问",
+        "url_public_access": "公网访问",
+        "card_title": "接口调用地址",
+        "status_listening": "Listening",
+        "copy_url": "复制链接",
+        "copied": "已复制",
+        "not_configured": "未配置",
+        "not_configured_public": "未配置公网访问地址"
+      }
+    }
   }
 }

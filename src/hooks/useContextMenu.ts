@@ -20,8 +20,10 @@ import { paste } from "@/plugins/paste";
 import { hideWindow } from "@/plugins/window";
 import { clipboardStore } from "@/stores/clipboard";
 import { globalStore } from "@/stores/global";
+import { transferStore } from "@/stores/transfer";
 import { isMac } from "@/utils/is";
 import { join } from "@/utils/path";
+import { buildTransferPushItem } from "@/utils/transferPushItem";
 
 interface UseContextMenuProps extends ItemProps {
   handleNext: () => void;
@@ -57,6 +59,44 @@ export const useContextMenu = (props: UseContextMenuProps) => {
     matched.favorite = nextFavorite;
 
     updateHistory(id, { favorite: nextFavorite });
+
+    if (nextFavorite) {
+      import("@/stores/transfer").then(async ({ transferStore: ts }) => {
+        if (ts.push.masterEnabled && ts.push.autoPushMode === "favorites_only") {
+          try {
+            const { invoke } = await import("@tauri-apps/api/core");
+            const config = await invoke("plugin:transfer|get_transfer_config");
+            if (!config) return;
+            const providers = [
+              ts.push.barkEnabled ? "bark" : null,
+              ts.push.webhookEnabled ? "webhook" : null,
+            ].filter(Boolean);
+
+            if (providers.length === 0) return;
+
+            await invoke("plugin:transfer|push_clipboard_item", {
+              item: buildTransferPushItem(data),
+              config,
+              nonSensitive: {
+                providers,
+                service_port: ts.receive.port,
+                bark_level: ts.push.barkLevel,
+                bark_auto_copy: ts.push.barkAutoCopy,
+                bark_archive: ts.push.barkArchive,
+                bark_group_mode: ts.push.barkGroupMode,
+                bark_group_mapping: ts.push.barkGroupMapping,
+                image_strategy: ts.push.imageStrategy,
+                image_ttl_seconds: ts.push.imageTtlSeconds,
+                image_local_directory: ts.push.imageLocalDirectory,
+                webhook_payload_template: ts.push.webhookPayloadTemplate,
+              },
+            });
+          } catch {
+            // 静默失败
+          }
+        }
+      });
+    }
   };
 
   const openToBrowser = () => {
@@ -320,26 +360,67 @@ export const useContextMenu = (props: UseContextMenuProps) => {
       text: t("clipboard.button.context_menu.paste_as_cmyk"),
     };
 
+    // 推送菜单项：仅在主动推送开启时显示
+    const pushItem: ContextMenuItem = {
+      action: async () => {
+        const { invoke } = await import("@tauri-apps/api/core");
+        const creds = await invoke("plugin:transfer|get_transfer_config");
+        if (!creds) return;
+        try {
+          const providers = [
+            transferStore.push.barkEnabled ? "bark" : null,
+            transferStore.push.webhookEnabled ? "webhook" : null,
+          ].filter(Boolean);
+
+          if (providers.length === 0) return;
+
+          await invoke("plugin:transfer|push_clipboard_item", {
+            item: buildTransferPushItem(data),
+            config: creds,
+            nonSensitive: {
+              providers,
+              service_port: transferStore.receive.port,
+              bark_level: transferStore.push.barkLevel,
+              bark_auto_copy: transferStore.push.barkAutoCopy,
+              bark_archive: transferStore.push.barkArchive,
+              bark_group_mode: transferStore.push.barkGroupMode,
+              bark_group_mapping: transferStore.push.barkGroupMapping,
+              image_strategy: transferStore.push.imageStrategy,
+              image_ttl_seconds: transferStore.push.imageTtlSeconds,
+              image_local_directory: transferStore.push.imageLocalDirectory,
+              webhook_payload_template: transferStore.push.webhookPayloadTemplate,
+            },
+          });
+        } catch {
+          // 静默失败：队列内部会 log 错误
+        }
+      },
+      hide:
+        !transferStore.push.masterEnabled ||
+        (!transferStore.push.barkEnabled && !transferStore.push.webhookEnabled),
+      text: t("clipboard.button.context_menu.push"),
+    };
+
     // 根据类型分配菜单组
     // 图片类型
     if (type === "image") {
       return [
         [copy, paste],
-        [previewImage, downloadImg, showInExplorer],
+        [pushItem, previewImage, downloadImg, showInExplorer],
         [fav, note, del],
       ];
     }
 
     // 文件类型
     if (type === "files") {
-      return [[copy, pastePath], [showInExplorer], [fav, note, del]];
+      return [[copy, pastePath], [pushItem, showInExplorer], [fav, note, del]];
     }
 
     // 富文本类型
     if (type === "rtf") {
       return [
         [copy, paste, pastePlainText],
-        [exportFile],
+        [pushItem, exportFile],
         [edit, fav, note, del],
       ];
     }
@@ -348,7 +429,7 @@ export const useContextMenu = (props: UseContextMenuProps) => {
     if (type === "html") {
       return [
         [copy, paste, pastePlainText],
-        [exportFile],
+        [pushItem, exportFile],
         [edit, fav, note, del],
       ];
     }
@@ -357,7 +438,7 @@ export const useContextMenu = (props: UseContextMenuProps) => {
     if (isUrl) {
       return [
         [copy, paste],
-        [openBrowser, exportFile],
+        [pushItem, openBrowser, exportFile],
         [edit, fav, note, del],
       ];
     }
@@ -365,7 +446,7 @@ export const useContextMenu = (props: UseContextMenuProps) => {
     if (isEmail) {
       return [
         [copy, paste],
-        [sendEmail, exportFile],
+        [pushItem, sendEmail, exportFile],
         [edit, fav, note, del],
       ];
     }
@@ -373,7 +454,7 @@ export const useContextMenu = (props: UseContextMenuProps) => {
     if (isColor) {
       return [
         [copy, paste],
-        [pasteHex, pasteRgb, pasteCmyk, exportFile],
+        [pushItem, pasteHex, pasteRgb, pasteCmyk, exportFile],
         [edit, fav, note, del],
       ];
     }
@@ -381,7 +462,7 @@ export const useContextMenu = (props: UseContextMenuProps) => {
     if (isPath) {
       return [
         [copy, paste],
-        [showInExplorer, exportFile],
+        [pushItem, showInExplorer, exportFile],
         [edit, fav, note, del],
       ];
     }
@@ -389,21 +470,21 @@ export const useContextMenu = (props: UseContextMenuProps) => {
     if (isCommand) {
       return [
         [copy, paste],
-        [runCommand, exportFile],
+        [pushItem, runCommand, exportFile],
         [edit, fav, note, del],
       ];
     }
 
     if (isMarkdown) {
-      return [[copy, paste], [exportFile], [edit, fav, note, del]];
+      return [[copy, paste], [pushItem, exportFile], [edit, fav, note, del]];
     }
 
     if (isCode) {
-      return [[copy, paste], [exportFile], [edit, fav, note, del]];
+      return [[copy, paste], [pushItem, exportFile], [edit, fav, note, del]];
     }
 
     // 默认：纯文本
-    return [[copy, paste], [exportFile], [edit, fav, note, del]];
+    return [[copy, paste], [pushItem, exportFile], [edit, fav, note, del]];
   };
 
   const handleContextMenu = async (event: MouseEvent) => {

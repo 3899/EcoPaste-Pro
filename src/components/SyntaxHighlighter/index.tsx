@@ -50,7 +50,7 @@ const SyntaxHighlighter = ({
   }, [value, language, isDark, expanded]);
 
   const rootClasses = clsx(
-    "whitespace-pre-wrap break-words font-mono text-sm leading-relaxed p-2 rounded-md",
+    "syntax-highlighter-preview max-w-full overflow-hidden whitespace-pre-wrap break-words font-mono text-sm leading-relaxed p-2 rounded-md",
     "font-['Maple_Mono_NF_CN',_Consolas,'Courier_New',monospace]",
     className,
     // 透传背景色，让外层容器控制背景

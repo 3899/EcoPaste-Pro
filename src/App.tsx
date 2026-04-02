@@ -1,4 +1,5 @@
 import { HappyProvider } from "@ant-design/happy-work-theme";
+import { invoke } from "@tauri-apps/api/core";
 import { getCurrentWebviewWindow } from "@tauri-apps/api/webviewWindow";
 import { error } from "@tauri-apps/plugin-log";
 import { openUrl } from "@tauri-apps/plugin-opener";
@@ -7,7 +8,7 @@ import { ConfigProvider, theme } from "antd";
 import { isString } from "es-toolkit";
 import { RouterProvider } from "react-router-dom";
 import { useSnapshot } from "valtio";
-import { LISTEN_KEY, PRESET_SHORTCUT } from "./constants";
+import { LISTEN_KEY, PRESET_SHORTCUT, WINDOW_LABEL } from "./constants";
 import { destroyDatabase } from "./database";
 import { useImmediateKey } from "./hooks/useImmediateKey";
 import { useTauriListen } from "./hooks/useTauriListen";
@@ -16,9 +17,11 @@ import { getAntdLocale, i18n } from "./locales";
 import { hideWindow, showWindow } from "./plugins/window";
 import { router } from "./router";
 import { globalStore } from "./stores/global";
+import { transferStore } from "./stores/transfer";
 import { startAutoBackupScheduler } from "./utils/autoBackupScheduler";
 import { generateColorVars } from "./utils/color";
 import { isURL } from "./utils/is";
+import { getSaveDatabasePath } from "./utils/path";
 import { restoreStore } from "./utils/store";
 
 const { defaultAlgorithm, darkAlgorithm } = theme;
@@ -32,6 +35,26 @@ const App = () => {
     await restoreState();
 
     await restoreStore();
+
+    const appWindow = getCurrentWebviewWindow();
+
+    if (appWindow.label === WINDOW_LABEL.MAIN && transferStore.receive.masterEnabled) {
+      try {
+        const dbPath = await getSaveDatabasePath();
+        const config = await invoke<{ receive_token?: string } | null>(
+          "plugin:transfer|get_transfer_config",
+        );
+
+        await invoke("plugin:transfer|start_receiver", {
+          autoCopy: transferStore.receive.autoCopy,
+          dbPath,
+          port: transferStore.receive.port,
+          token: config?.receive_token ?? "",
+        });
+      } catch (reason) {
+        error(`Failed to auto start receiver: ${String(reason)}`);
+      }
+    }
 
     toggle();
 

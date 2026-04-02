@@ -7,6 +7,7 @@ export type Language = (typeof LANGUAGE)[keyof typeof LANGUAGE];
 export interface Store {
   globalStore: GlobalStore;
   clipboardStore: ClipboardStore;
+  transferStore: TransferStore;
 }
 
 export interface GlobalStore {
@@ -62,7 +63,8 @@ export type OperationButton =
   | "previewImage"
   | "edit"
   | "openFolder"
-  | "runCommand";
+  | "runCommand"
+  | "push";
 
 export interface ClipboardStore {
   // 窗口设置
@@ -152,3 +154,39 @@ export interface ScheduleConfig {
 
 // 自动备份策略
 export type AutoBackupStrategy = "off" | "full" | "lite" | "combined";
+
+// 自动推送模式
+export type AutoPushMode = "off" | "favorites_only" | "custom";
+
+// 数据互传配置
+export interface TransferStore {
+  push: {
+    masterEnabled: boolean;
+    autoPushMode: AutoPushMode;
+    autoPushTags: string[]; // CONTENT_TYPE_TAGS keys
+    provider?: "bark" | "webhook"; // legacy fallback for older persisted config
+    barkEnabled: boolean;
+    webhookEnabled: boolean;
+    // Bark 非敏感配置
+    barkAutoCopy: boolean;
+    barkArchive: boolean;
+    barkLevel: "active" | "timeSensitive" | "passive";
+    barkGroupMode: "disabled" | "auto" | "custom";
+    barkGroupMapping: Record<string, string>;
+    imageStrategy:
+      | "lan_server"
+      | "webhook_server"
+      | "webdav"
+      | "localpath"
+      | "reject";
+    imageTtlSeconds: number;
+    imageLocalDirectory: string;
+    // Webhook 非敏感配置
+    webhookPayloadTemplate: string;
+  };
+  receive: {
+    masterEnabled: boolean;
+    port: number;
+    autoCopy: boolean; // 自动写入系统剪贴板
+  };
+}

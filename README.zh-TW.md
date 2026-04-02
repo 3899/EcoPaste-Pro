@@ -1,5 +1,5 @@
-<a href="https://github.com/EcoPasteHub/EcoPaste">
-  <img src="https://socialify.git.ci/EcoPasteHub/EcoPaste/image?description=1&descriptionEditable=%E9%81%A9%E7%94%A8%E6%96%BC%20Windows%E3%80%81MacOS%20%E5%92%8C%20Linux(x11)%20%E7%9A%84%E9%96%8B%E6%BA%90%E5%89%AA%E8%B2%BC%E6%9D%BF%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E3%80%82&font=Source%20Code%20Pro&forks=1&issues=1&logo=https%3A%2F%2Fgithub.com%2FEcoPasteHub%2FEcoPaste%2Fblob%2Fmaster%2Fpublic%2Flogo.png%3Fraw%3Dtrue&name=1&owner=1&pattern=Floating%20Cogs&pulls=1&stargazers=1&theme=Auto" alt="EcoPaste" />
+﻿<a href="https://github.com/3899/EcoPaste-Pro">
+  <img src="https://socialify.git.ci/3899/EcoPaste-Pro/image?description=1&descriptionEditable=%E9%81%A9%E7%94%A8%E6%96%BC%20Windows%E3%80%81MacOS%20%E5%92%8C%20Linux(x11)%20%E7%9A%84%E9%96%8B%E6%BA%90%E5%89%AA%E8%B2%BC%E6%9D%BF%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E3%80%82&font=Source%20Code%20Pro&logo=https%3A%2F%2Fgithub.com%2FEcoPasteHub%2FEcoPaste%2Fblob%2Fmaster%2Fpublic%2Flogo.png%3Fraw%3Dtrue&name=1&owner=1&pattern=Floating%20Cogs&theme=Auto" alt="EcoPaste" />
 </a>
 
 <div align="center">
@@ -12,19 +12,19 @@
   <br/>
 
   <div>
-    <a href="https://github.com/EcoPasteHub/EcoPaste/releases">
+    <a href="https://github.com/3899/EcoPaste-Pro/releases">
       <img
         alt="Windows"
         src="https://img.shields.io/badge/-Windows-blue?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB0PSIxNzI2MzA1OTcxMDA2IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjE1NDgiIHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4Ij48cGF0aCBkPSJNNTI3LjI3NTU1MTYxIDk2Ljk3MTAzMDEzdjM3My45OTIxMDY2N2g0OTQuNTEzNjE5NzVWMTUuMDI2NzU3NTN6TTUyNy4yNzU1NTE2MSA5MjguMzIzNTA4MTVsNDk0LjUxMzYxOTc1IDgwLjUyMDI4MDQ5di00NTUuNjc3NDcxNjFoLTQ5NC41MTM2MTk3NXpNNC42NzA0NTEzNiA0NzAuODMzNjgyOTdINDIyLjY3Njg1OTI1VjExMC41NjM2ODE5N2wtNDE4LjAwNjQwNzg5IDY5LjI1Nzc5NzUzek00LjY3MDQ1MTM2IDg0Ni43Njc1OTcwM0w0MjIuNjc2ODU5MjUgOTE0Ljg2MDMxMDEzVjU1My4xNjYzMTcwM0g0LjY3MDQ1MTM2eiIgcC1pZD0iMTU0OSIgZmlsbD0iI2ZmZmZmZiI+PC9wYXRoPjwvc3ZnPg=="
       />
     </a >  
-    <a href="https://github.com/EcoPasteHub/EcoPaste/releases">
+    <a href="https://github.com/3899/EcoPaste-Pro/releases">
       <img
         alt="MacOS"
         src="https://img.shields.io/badge/-MacOS-black?style=flat-square&logo=apple&logoColor=white"
       />
     </a >
-    <a href="https://github.com/EcoPasteHub/EcoPaste/releases">
+    <a href="https://github.com/3899/EcoPaste-Pro/releases">
       <img 
         alt="Linux"
         src="https://img.shields.io/badge/-Linux-yellow?style=flat-square&logo=linux&logoColor=white" 
@@ -35,17 +35,17 @@
   <div>
     <a href="./LICENSE">
       <img
-        src="https://img.shields.io/github/license/EcoPasteHub/EcoPaste?style=flat-square"
+        src="https://img.shields.io/github/license/3899/EcoPaste-Pro?style=flat-square"
       />
     </a >
-    <a href="https://github.com/EcoPasteHub/EcoPaste/releases">
+    <a href="https://github.com/3899/EcoPaste-Pro/releases">
       <img
-        src="https://img.shields.io/github/package-json/v/EcoPasteHub/EcoPaste?style=flat-square"
+        src="https://img.shields.io/github/package-json/v/3899/EcoPaste-Pro?style=flat-square"
       />
     </a >
-    <a href="https://github.com/EcoPasteHub/EcoPaste/releases">
+    <a href="https://github.com/3899/EcoPaste-Pro/releases">
       <img
-        src="https://img.shields.io/github/downloads/EcoPasteHub/EcoPaste/total?style=flat-square"
+        src="https://img.shields.io/github/downloads/3899/EcoPaste-Pro/total?style=flat-square"
       />  
     </a >
   </div>
@@ -53,9 +53,17 @@
   <br/>
 
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./static/app-dark.zh-TW.png" />
-    <source media="(prefers-color-scheme: light)" srcset="./static/app-light.zh-TW.png" />
-    <img src="./static/app-light.zh-TW.png" />
+    <img src="./static/Clipboard.png" width="100%" alt="Clipboard" />
+    <br/><br/>
+    <img src="./static/Settings - Clipboard.png" width="100%" alt="Settings Clipboard" />
+    <br/><br/>
+    <img src="./static/Settings - Storage Statistics.png" width="100%" alt="Storage Statistics" />
+    <br/><br/>
+    <img src="./static/Settings - Shortcuts.png" width="100%" alt="Shortcuts" />
+    <br/><br/>
+    <img src="./static/Settings - Data Backup.png" width="100%" alt="Data Backup" />
+    <br/><br/>
+    <img src="./static/Settings - Data Sync.png" width="100%" alt="Data Sync" />
   </picture>
 </div>
 
@@ -81,9 +89,32 @@
 
 ## 🚀 Fork 版本更新歷史
 
-> 本倉庫是 [EcoPasteHub/EcoPaste](https://github.com/EcoPasteHub/EcoPaste) 的 Fork 版本，在原版基礎上增加了以下易用性改進與更新歷史：
+> 本倉庫是 [3899/EcoPaste-Pro](https://github.com/3899/EcoPaste-Pro) 的 Fork 版本，在原版基礎上增加了以下易用性改進與更新歷史：
 
 ### Pro.5.x <font size="-2" color="gray">（基於原版v0.6.0-beta.3分支）</font>
+
+#### Pro.5.4
+
+##### ✨ 新增功能
+- **🔄 輕量資料同步模組落地**：偏好設定加入「資料同步」入口，分為「推播資料 / 接收資料」三大模組。
+- **📤 主動推播能力接入主介面**：歷史紀錄頭部操作按鈕、右鍵選單、偏好設定操作按鈕均新增「推播」，支援把單條剪貼簿內容主動發到外部設備。
+- **⚙️ 自動推播策略**：支援「關閉 / 僅收藏 / 自訂標籤」三種模式；其中僅收藏模式會在條目標星時自動推播，自訂模式支援按內容類型標籤篩選。
+- **📡 自動接收服務**：新增本地 HTTP 接收介面，支援 text / html / rtf / files / image 寫入本地歷史，並可選自動回寫系統剪貼簿。
+- **🖼️ 圖片中轉策略**：圖片推播支援「區域網臨時直鏈 / Webhook 網關 / WebDAV / 本地目錄映射 / 直接攔截」五種策略。
+- **📍 遠端來源標記**：遠端寫入內容會保留來源設備資訊，並在清單中顯示遠端設備圖示。
+
+##### 💫 體驗優化
+- **💻 程式碼預覽換行優化**：程式碼高亮預覽改為真實高度裁切並支援自動換行，長程式碼不再橫向溢出。
+- **🎨 HTML 可讀性增強**：新增主題智慧感知與文字對比度自動修正能力，解決明暗主題下文字顯示不清的問題。
+- **♻️ 防同步迴圈**：新增傳輸回寫指紋保護，避免「接收後自動複製」再次觸發本地監聽，造成重複入庫或重複推播。
+- **🖼️ 圖片接收穩定化**：接收圖片統一轉存為 PNG，並補充尺寸/體積元資料；針對 SVG / HEIC / HEIF 格式圖片需要在上傳時統一轉換為普通圖片。
+
+##### 🏗️ 架構優化
+- **🧵 推播鏈路佇列化**：推播改為非同步佇列處理，避免阻塞主剪貼簿監聽流程。
+- **🔐 配置分層儲存**：敏感憑證走系統憑證儲存，普通配置資訊落入使用者設定檔內。
+
+##### 🐞 bug 修復
+- **🧲 操作按鈕配置重構**：修復了「自訂操作按鈕彈窗」中無法拖曳調整按鈕順序的問題，重構底層拖曳邏輯以相容並存的「拖曳匯入備份檔案」功能。
 
 #### Pro.5.3
 
@@ -283,7 +314,7 @@
 - **📋 剪貼板類型誤判**：徹底修復網路圖片可能會因 html 權重被錯誤識別為網頁的問題。深度改寫判定邏輯，賦予圖片層級最高優先順序。
 
 #### 🔄 自動同步上游
-- 每天自動檢查上游 EcoPasteHub/EcoPaste 的更新
+- 每天自動檢查上游 3899/EcoPaste-Pro 的更新
 - 有新版本時跨分支自動合併並觸發增量構建
 - 如遇重構衝突會創建 Issue 提供手工接軌通道
 
@@ -291,6 +322,8 @@
 
 ## 問題迴響
 
-1. 🔍 優先查閱[常見問題](https://ecopaste.cn/problem/macos/damage)或瀏覽已有 [issues](https://github.com/EcoPasteHub/EcoPaste/issues)。
+1. 🔍 優先查閱[常見問題](https://ecopaste.cn/problem/macos/damage)或瀏覽已有 [issues](https://github.com/3899/EcoPaste-Pro/issues)。
 
-2. ❓ 如果問題仍未解決，請提交新的 [issue](https://github.com/EcoPasteHub/EcoPaste/issues/new/choose)，並附上詳細描述，方便我們快速定位和解決。
+2. ❓ 如果問題仍未解決，請提交新的 [issue](https://github.com/3899/EcoPaste-Pro/issues/new/choose)，並附上詳細描述，方便我們快速定位和解決。
+
+

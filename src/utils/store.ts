@@ -11,6 +11,7 @@ import { omit } from "es-toolkit/compat";
 import { getLocale } from "tauri-plugin-locale-api";
 import { clipboardStore } from "@/stores/clipboard";
 import { globalStore } from "@/stores/global";
+import { transferStore } from "@/stores/transfer";
 import type { Language, Store } from "@/types/store";
 import { deepAssign } from "./object";
 import { getSaveStorePath } from "./path";
@@ -38,7 +39,7 @@ const initStore = async () => {
  * @param backup 是否为备份数据
  */
 export const saveStore = async (backup = false) => {
-  const store = { clipboardStore, globalStore };
+  const store = { clipboardStore, globalStore, transferStore };
   const content = JSON.stringify(store, null, 2);
 
   const path = await getSaveStorePath(backup);
@@ -67,6 +68,19 @@ export const restoreStore = async (backup = false) => {
 
     deepAssign(globalStore, nextGlobalStore);
     deepAssign(clipboardStore, store.clipboardStore);
+    if (store.transferStore) {
+      deepAssign(transferStore, store.transferStore);
+
+      const legacyProvider = store.transferStore.push?.provider;
+      const hasNewChannelFlags =
+        store.transferStore.push?.barkEnabled !== undefined ||
+        store.transferStore.push?.webhookEnabled !== undefined;
+
+      if (!hasNewChannelFlags && legacyProvider) {
+        transferStore.push.barkEnabled = legacyProvider === "bark";
+        transferStore.push.webhookEnabled = legacyProvider === "webhook";
+      }
+    }
   }
 
   if (backup) return;

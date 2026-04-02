@@ -1,3 +1,4 @@
+import { invoke } from "@tauri-apps/api/core";
 import { openPath, openUrl, revealItemInDir } from "@tauri-apps/plugin-opener";
 import { useCreation } from "ahooks";
 import { Flex } from "antd";
@@ -11,9 +12,14 @@ import { MainContext } from "@/pages/Main";
 import { transferData } from "@/pages/Preference/components/Clipboard/components/OperationButton";
 import { pasteToClipboard, writeToClipboard } from "@/plugins/clipboard";
 import { clipboardStore } from "@/stores/clipboard";
+import { transferStore } from "@/stores/transfer";
 import type { DatabaseSchemaHistory } from "@/types/database";
 import type { OperationButton } from "@/types/store";
 import { dayjs } from "@/utils/dayjs";
+import { buildTransferPushItem } from "@/utils/transferPushItem";
+
+const REMOTE_SOURCE_ICON =
+  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'><path fill='%231E88FE' d='M512 1024C229.248 1024 0 794.752 0 512S229.248 0 512 0s512 229.248 512 512-229.248 512-512 512z m142.250667-848.469333H369.749333c-26.453333 0-47.914667 20.992-47.914666 46.848v539.946666a47.36 47.36 0 0 0 47.914666 46.848h284.501334c26.453333 0 47.914667-20.992 47.914666-46.848V222.378667c0-25.856-21.461333-46.848-47.914666-46.848z m-181.845334 21.930666h79.274667c4.565333 0 8.234667 3.669333 8.234667 8.32a8.234667 8.234667 0 0 1-8.234667 8.234667h-79.274667a8.234667 8.234667 0 0 1-8.234666-8.234667 8.234667 8.234667 0 0 1 8.234666-8.32zM512 780.416a31.36 31.36 0 0 1-31.701333-31.018667c0-17.066667 14.208-30.976 31.701333-30.976s31.701333 13.866667 31.701333 30.976a31.36 31.36 0 0 1-31.701333 31.018667z m165.205333-130.346667c0 10.325333-8.533333 18.773333-19.157333 18.773334H365.952a18.901333 18.901333 0 0 1-19.157333-18.773334V252.16c0-10.325333 8.533333-18.773333 19.157333-18.773333h292.096c10.581333 0 19.157333 8.405333 19.157333 18.773333v397.866667z'/></svg>";
 
 interface HeaderProps {
   data: DatabaseSchemaHistory;
@@ -153,6 +159,44 @@ const Header: FC<HeaderProps> = (props) => {
         break;
       case "runCommand":
         return openPath(value as string);
+      case "push":
+        import("@/stores/transfer").then(async ({ transferStore: ts }) => {
+          try {
+            const config = await invoke("plugin:transfer|get_transfer_config");
+            if (!config) {
+              return;
+            }
+            const providers = [
+              ts.push.barkEnabled ? "bark" : null,
+              ts.push.webhookEnabled ? "webhook" : null,
+            ].filter(Boolean);
+
+            if (providers.length === 0) {
+              return;
+            }
+
+            await invoke("plugin:transfer|push_clipboard_item", {
+              item: buildTransferPushItem(data),
+              config,
+              nonSensitive: {
+                providers,
+                service_port: ts.receive.port,
+                bark_level: ts.push.barkLevel,
+                bark_auto_copy: ts.push.barkAutoCopy,
+                bark_archive: ts.push.barkArchive,
+                bark_group_mode: ts.push.barkGroupMode,
+                bark_group_mapping: ts.push.barkGroupMapping,
+                image_strategy: ts.push.imageStrategy,
+                image_ttl_seconds: ts.push.imageTtlSeconds,
+                image_local_directory: ts.push.imageLocalDirectory,
+                webhook_payload_template: ts.push.webhookPayloadTemplate,
+              },
+            });
+          } catch {
+            // 静默失败
+          }
+        });
+        return;
     }
   };
 
@@ -171,13 +215,27 @@ const Header: FC<HeaderProps> = (props) => {
       ? dayjs(createTime).format("YY/M/D H:mm")
       : dayjs(createTime).locale(i18n.language).fromNow();
 
+  const hasRenderableSourceIcon =
+    !!data.sourceAppIcon &&
+    !(
+      data.isFromSync &&
+      !/^(data:image\/|https?:\/\/|blob:|\/|[A-Za-z]:[\\/])/.test(
+        data.sourceAppIcon,
+      )
+    );
+
+  const shouldUseRemoteDeviceIcon =
+    !hasRenderableSourceIcon &&
+    !!data.sourceAppName &&
+    (data.isFromSync || data.sourceAppName.toLowerCase() === "iphone");
+
   return (
     <div className="relative flex h-[22px] items-center text-color-2">
       <div
         className="flex flex-1 items-center gap-2 overflow-hidden whitespace-nowrap text-[11px]"
         title={fullTextInfo}
       >
-        {data.sourceAppIcon && (
+        {hasRenderableSourceIcon && data.sourceAppIcon && (
           <img
             alt={data.sourceAppName}
             className="h-3.5 w-3.5 flex-shrink-0 rounded-sm object-contain"
@@ -185,13 +243,22 @@ const Header: FC<HeaderProps> = (props) => {
             title={data.sourceAppName}
           />
         )}
-        {!data.sourceAppIcon && data.sourceAppName && (
-          <span
-            className="flex-shrink-0 text-12 opacity-70"
-            title={data.sourceAppName}
-          >
-            [{data.sourceAppName}]
-          </span>
+        {!hasRenderableSourceIcon && data.sourceAppName && (
+          shouldUseRemoteDeviceIcon ? (
+            <img
+              alt={data.sourceAppName}
+              className="h-3.5 w-3.5 flex-shrink-0 rounded-sm object-contain opacity-85"
+              src={REMOTE_SOURCE_ICON}
+              title={data.sourceAppName}
+            />
+          ) : (
+            <span
+              className="flex-shrink-0 text-12 opacity-70"
+              title={data.sourceAppName}
+            >
+              [{data.sourceAppName}]
+            </span>
+          )
         )}
         <span className="flex-shrink-0">{renderType()}</span>
         <span className="flex-shrink-0">{renderCount()}</span>
@@ -235,6 +302,12 @@ const Header: FC<HeaderProps> = (props) => {
           )
             return null;
           if (key === "runCommand" && subtype !== "command") return null;
+          if (
+            key === "push" &&
+            (!transferStore.push.masterEnabled ||
+              (!transferStore.push.barkEnabled && !transferStore.push.webhookEnabled))
+          )
+            return null;
 
           const isFavorite = key === "star" && favorite;
 

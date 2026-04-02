@@ -1,6 +1,6 @@
 [package]
 name = "EcoPaste"
-version = "0.6.0-beta.3-Pro.5.3"
+version = "0.6.0-beta.3-Pro.5.4"
 description = "一款开源的跨平台剪贴板管理工具"
 authors = []
 edition = "2021"
@@ -41,6 +41,7 @@ tauri-plugin-eco-window.workspace = true
 tauri-plugin-eco-paste.workspace = true
 tauri-plugin-eco-autostart.workspace = true
 tauri-plugin-eco-webdav.workspace = true
+tauri-plugin-transfer.workspace = true
 
 image = { version = "0.25", default-features = false, features = ["png", "jpeg", "gif"] }
 file_icon_provider = "0.4"

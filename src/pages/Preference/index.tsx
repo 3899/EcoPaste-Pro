@@ -16,6 +16,7 @@ import { isAutostart } from "@/plugins/autostart";
 import { showWindow, toggleWindowVisible } from "@/plugins/window";
 import { clipboardStore } from "@/stores/clipboard";
 import { globalStore } from "@/stores/global";
+import { transferStore } from "@/stores/transfer";
 import { raf } from "@/utils/bom";
 import { isMac } from "@/utils/is";
 import { saveStore } from "@/utils/store";
@@ -25,6 +26,7 @@ import Clipboard from "./components/Clipboard";
 import General from "./components/General";
 import Shortcut from "./components/Shortcut";
 import Storage from "./components/Storage";
+import Transfer from "./components/Transfer";
 
 const Preference = () => {
   const { t } = useTranslation();
@@ -50,12 +52,15 @@ const Preference = () => {
   // 监听剪贴板配置项变化
   useSubscribe(clipboardStore, () => handleStoreChanged());
 
+  // 监听互传配置项变化
+  useSubscribe(transferStore, () => handleStoreChanged());
+
   // 监听快捷键切换窗口显隐
   useRegister(toggleWindowVisible, [shortcut.preference]);
 
   // 配置项变化通知其它窗口和本地存储
   const handleStoreChanged = () => {
-    emit(LISTEN_KEY.STORE_CHANGED, { clipboardStore, globalStore });
+    emit(LISTEN_KEY.STORE_CHANGED, { clipboardStore, globalStore, transferStore });
 
     saveStore();
   };
@@ -91,6 +96,12 @@ const Preference = () => {
         icon: "i-lucide:database-backup",
         key: "backup",
         label: t("preference.menu.title.backup"),
+      },
+      {
+        content: <Transfer />,
+        icon: "i-lucide:refresh-cw",
+        key: "transfer",
+        label: t("preference.menu.title.transfer"),
       },
       {
         content: <About />,
