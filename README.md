@@ -1,4 +1,4 @@
-﻿<a href="https://github.com/3899/EcoPaste-Pro">
+<a href="https://github.com/3899/EcoPaste-Pro">
   <img src="https://socialify.git.ci/3899/EcoPaste-Pro/image?description=1&descriptionEditable=%E9%80%82%E7%94%A8%E4%BA%8E%20Windows%E3%80%81MacOS%20%E5%92%8C%20Linux(x11)%20%E7%9A%84%E5%BC%80%E6%BA%90%E5%89%AA%E8%B4%B4%E6%9D%BF%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E3%80%82&font=Source%20Code%20Pro&logo=https%3A%2F%2Fgithub.com%2FEcoPasteHub%2FEcoPaste%2Fblob%2Fmaster%2Fpublic%2Flogo.png%3Fraw%3Dtrue&name=1&owner=1&pattern=Floating%20Cogs&theme=Auto" alt="EcoPaste" />
 </a>
 
@@ -67,12 +67,20 @@
   </picture>
 </div>
 
+## ℹ️ 分支说明
+
+> 本仓库是 [EcoPasteHub/EcoPaste](https://github.com/EcoPasteHub/EcoPaste) 的 Fork 版本，在官方原版基础上，重构并新增了跨设备数据同步、WebDAV 云端数据资产安全备份、全景存储统计等多项高级功能，同时全面增强了剪贴板内容的智能分类识别引擎与日常交互的沉浸式体验。
+
 ## 下载
 
-### Windows
-最新版本: [前往 Releases 下载最新构建程序包](https://github.com/3899/EcoPaste/releases/latest)
+### 🔗 官方原版
+- 🌐 GitHub 主页：[EcoPasteHub/EcoPaste](https://github.com/EcoPasteHub/EcoPaste)
+- 📥 官方下载：[Releases 页面](https://github.com/EcoPasteHub/EcoPaste/releases)
+- 📚 使用文档：[EcoPaste 官网](https://ecopaste.cn/)
 
-安装指南: [点击查看](https://ecopaste.cn/guide/install#linux)
+### 🔗 本 Fork 分支
+- 📥 最新版本: [前往 Releases 下载最新构建程序包](https://github.com/3899/EcoPaste/releases/latest)
+
 
 ## 功能介绍
 
@@ -87,8 +95,6 @@
 - 🧩 持续优化中，更多惊喜功能等你发现。
 
 ## 🚀 Fork 版本更新历史
-
-> 本仓库是 [3899/EcoPaste-Pro](https://github.com/3899/EcoPaste-Pro) 的 Fork 版本，在原版基础上增加了以下易用性改进与更新历史：
 
 ### Pro.5.x <font size="-2" color="gray">（基于原版v0.6.0-beta.3分支）</font>
 

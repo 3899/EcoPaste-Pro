@@ -1,4 +1,4 @@
-﻿<a href="https://github.com/3899/EcoPaste-Pro">
+<a href="https://github.com/3899/EcoPaste-Pro">
   <img src="https://socialify.git.ci/3899/EcoPaste-Pro/image?description=1&descriptionEditable=Windows%E3%80%81MacOS%E3%80%81Linux(x11)%20%E7%94%A8%E3%81%AE%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E3%82%AF%E3%83%AA%E3%83%83%E3%83%97%E3%83%9C%E3%83%BC%E3%83%89%E7%AE%A1%E7%90%86%E3%83%84%E3%83%BC%E3%83%AB%E3%80%82&font=Source%20Code%20Pro&logo=https%3A%2F%2Fgithub.com%2FEcoPasteHub%2FEcoPaste%2Fblob%2Fmaster%2Fpublic%2Flogo.png%3Fraw%3Dtrue&name=1&owner=1&pattern=Floating%20Cogs&theme=Auto" alt="EcoPaste" />
 </a>
 
@@ -67,13 +67,19 @@
   </picture>
 </div>
 
+## ℹ️ ブランチの説明
+
+> 本リポジトリは [EcoPasteHub/EcoPaste](https://github.com/EcoPasteHub/EcoPaste) の Fork 版です。公式のオリジナル版を基に、クロスデバイスのデータ同期、WebDAV クラウドデータ資産の安全なバックアップ、パノラマストレージ統計などの多数の高度な機能を再構築および追加しました。同時に、クリップボードコンテンツのインテリジェントな分類・認識エンジンと日常のインタラクションの没入型体験を全面的に強化しています。
+
 ## ダウンロード
 
-### Windows
+### 🔗 公式オリジナル版
+- 🌐 GitHub トップページ：[EcoPasteHub/EcoPaste](https://github.com/EcoPasteHub/EcoPaste)
+- 📥 公式ダウンロード：[Releases ページ](https://github.com/EcoPasteHub/EcoPaste/releases)
+- 📚 ドキュメント：[EcoPaste 公式サイト](https://ecopaste.cn/)
 
-最新バージョン: [Releases から最新ビルドをダウンロード](https://github.com/3899/EcoPaste/releases/latest)
-
-インストールガイド：[クリックして確認する](https://ecopaste.cn/guide/install#linux)
+### 🔗 当 Fork ブランチ
+- 📥 最新バージョン: [Releases から最新ビルドをダウンロード](https://github.com/3899/EcoPaste/releases/latest)
 
 ## 機能紹介
 
@@ -87,9 +93,7 @@
 - 🤝 完善なドキュメントとコミュニティ機能をサポート、開発者と共に成長を目指す。
 - 🧩 継続的な最適化し、もっと驚きの機能があなたの発見を待っている。
 
-## 🚀 Fork 版の更新履歴
 
-> 本リポジトリは [3899/EcoPaste-Pro](https://github.com/3899/EcoPaste-Pro) の Fork 版であり、オリジナル版に基づき以下のユーザビリティ改善及び更新履歴を追加しています：
 
 ### Pro.5.x <font size="-2" color="gray">（元の v0.6.0-beta.3 ブランチに基づく）</font>
 

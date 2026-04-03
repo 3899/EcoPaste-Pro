@@ -1,4 +1,4 @@
-﻿<a href="https://github.com/3899/EcoPaste-Pro">
+<a href="https://github.com/3899/EcoPaste-Pro">
   <img src="https://socialify.git.ci/3899/EcoPaste-Pro/image?description=1&descriptionEditable=Open%20source%20clipboard%20management%20tools%20for%20Windows%2C%20MacOS%20and%20Linux(x11).&font=Source%20Code%20Pro&logo=https%3A%2F%2Fgithub.com%2FEcoPasteHub%2FEcoPaste%2Fblob%2Fmaster%2Fpublic%2Flogo.png%3Fraw%3Dtrue&name=1&owner=1&pattern=Floating%20Cogs&theme=Auto" alt="EcoPaste" />
 </a>
 
@@ -67,13 +67,19 @@
   </picture>
 </div>
 
+## ℹ️ Branch Information
+
+> This repository is a fork of [EcoPasteHub/EcoPaste](https://github.com/EcoPasteHub/EcoPaste). Building upon the official release, it restructures and introduces advanced features such as cross-device data synchronization, secure WebDAV cloud backup for data assets, and panoramic storage statistics. Additionally, it comprehensively enhances the intelligent content classification engine and the immersive experience of daily interactions.
+
 ## Download
 
-### Windows
+### 🔗 Official Version
+- 🌐 GitHub Repository: [EcoPasteHub/EcoPaste](https://github.com/EcoPasteHub/EcoPaste)
+- 📥 Official Downloads: [Releases Page](https://github.com/EcoPasteHub/EcoPaste/releases)
+- 📚 Documentation: [EcoPaste Website](https://ecopaste.cn/)
 
-Latest Version: [Download Latest Build from Releases](https://github.com/3899/EcoPaste/releases/latest)
-
-Installation Guide: [Click here](https://ecopaste.cn/guide/install#linux)
+### 🔗 This Fork
+- 📥 Latest Version: [Download Latest Build from Releases](https://github.com/3899/EcoPaste/releases/latest)
 
 ## Features
 
@@ -87,9 +93,7 @@ Installation Guide: [Click here](https://ecopaste.cn/guide/install#linux)
 - 🤝 Comprehensive documentation and community support to explore and grow with developers.
 - 🧩 Continuously optimized with more exciting features waiting to be discovered.
 
-## 🚀 Fork Update History
 
-> This repository is a fork of [3899/EcoPaste-Pro](https://github.com/3899/EcoPaste-Pro) with the following usability improvements and update history:
 
 ### Pro.5.x <font size="-2" color="gray">(Based on the original v0.6.0-beta.3 branch)</font>
 
