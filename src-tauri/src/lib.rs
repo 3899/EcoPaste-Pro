@@ -1,6 +1,6 @@
 mod core;
 
-use core::{crash_log, prevent_default, setup, shortcut_hook};
+use core::{crash_log, prevent_default, setup, shell_actions, shortcut_hook};
 use tauri::{generate_context, Builder, Manager, WindowEvent};
 use tauri_plugin_autostart::MacosLauncher;
 use tauri_plugin_eco_window::{show_main_window, MAIN_WINDOW_LABEL, PREFERENCE_WINDOW_LABEL};
@@ -29,8 +29,6 @@ fn expand_env_vars(input: String) -> String {
     result
 }
 
-
-
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     crash_log::install_panic_hook();
@@ -52,8 +50,12 @@ pub fn run() {
         })
         // 确保在 windows 和 linux 上只有一个 app 实例在运行：https://github.com/tauri-apps/plugins-workspace/tree/v2/plugins/single-instance
         .plugin(tauri_plugin_single_instance::init(
-            |app_handle, _argv, _cwd| {
-                show_main_window(app_handle);
+            |app_handle, argv, _cwd| {
+                if shell_actions::has_shell_action(&argv) {
+                    shell_actions::handle_copy_file_content_from_args(argv);
+                } else {
+                    show_main_window(app_handle);
+                }
             },
         ))
         // app 自启动：https://github.com/tauri-apps/tauri-plugin-autostart/tree/v2
@@ -111,7 +113,12 @@ pub fn run() {
         .on_window_event(|window, event| match event {
             // 让 app 保持在后台运行：https://tauri.app/v1/guides/features/system-tray/#preventing-the-app-from-closing
             WindowEvent::CloseRequested { api, .. } => {
-                window.hide().unwrap();
+                if let Err(error) = window.hide() {
+                    log::error!("Failed to hide window on close request: {error}");
+                    crash_log::append_event(format!(
+                        "Failed to hide window on close request: {error}"
+                    ));
+                }
 
                 api.prevent_close();
             }
@@ -125,34 +132,38 @@ pub fn run() {
         .build(generate_context!())
         .expect("error while running tauri application");
 
-    app.run(|app_handle, event| {
-        match event {
-            tauri::RunEvent::Ready => {
-                log::info!("EcoPaste ready");
-                crash_log::append_event("EcoPaste ready");
-            }
-            tauri::RunEvent::ExitRequested { code, .. } => {
-                log::warn!("EcoPaste exit requested: {:?}", code);
-                crash_log::append_event(format!("EcoPaste exit requested: {:?}", code));
-            }
-            tauri::RunEvent::Exit => {
-                log::warn!("EcoPaste event loop exiting");
-                crash_log::append_event("EcoPaste event loop exiting");
-            }
-            #[cfg(target_os = "macos")]
-            tauri::RunEvent::Reopen {
-                has_visible_windows,
-                ..
-            } => {
-                if has_visible_windows {
-                    return;
-                }
+    let startup_args: Vec<String> = std::env::args().collect();
+    let has_startup_shell_action = shell_actions::has_shell_action(&startup_args);
 
-                tauri_plugin_eco_window::show_preference_window(app_handle);
+    app.run(move |app_handle, event| match event {
+        tauri::RunEvent::Ready => {
+            log::info!("EcoPaste ready");
+            crash_log::append_event("EcoPaste ready");
+            if has_startup_shell_action {
+                shell_actions::handle_copy_file_content_from_args(startup_args.clone());
             }
-            _ => {
-                let _ = app_handle;
+        }
+        tauri::RunEvent::ExitRequested { code, .. } => {
+            log::warn!("EcoPaste exit requested: {:?}", code);
+            crash_log::append_event(format!("EcoPaste exit requested: {:?}", code));
+        }
+        tauri::RunEvent::Exit => {
+            log::warn!("EcoPaste event loop exiting");
+            crash_log::append_event("EcoPaste event loop exiting");
+        }
+        #[cfg(target_os = "macos")]
+        tauri::RunEvent::Reopen {
+            has_visible_windows,
+            ..
+        } => {
+            if has_visible_windows {
+                return;
             }
+
+            tauri_plugin_eco_window::show_preference_window(app_handle);
+        }
+        _ => {
+            let _ = app_handle;
         }
     });
 }

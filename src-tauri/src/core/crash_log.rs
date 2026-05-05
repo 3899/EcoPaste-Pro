@@ -67,4 +67,3 @@ pub fn install_panic_hook() {
         default_hook(info);
     }));
 }
-
