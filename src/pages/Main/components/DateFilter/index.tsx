@@ -1,7 +1,7 @@
+import { FilterOutlined } from "@ant-design/icons";
 import { DatePicker, Flex, Popover, Tabs } from "antd";
 import type { Dayjs } from "dayjs";
 import { useContext, useEffect, useState } from "react";
-import UnoIcon from "@/components/UnoIcon";
 import { CONTENT_TYPE_TAGS } from "@/constants/contentTypes";
 import { getDatabase } from "@/database";
 import { useTauriFocus } from "@/hooks/useTauriFocus";
@@ -276,11 +276,10 @@ const DateFilter = () => {
       placement="bottomRight"
       trigger="click"
     >
-      <UnoIcon
-        active={isFilterActive}
-        className="cursor-pointer text-[1.05rem] transition-colors hover:text-primary"
-        hoverable
-        name="i-lucide:filter"
+      <FilterOutlined
+        className={`cursor-pointer text-[1.05rem] transition-colors hover:text-primary ${
+          isFilterActive ? "text-primary" : ""
+        }`}
         title="按日期和标签筛选"
       />
     </Popover>

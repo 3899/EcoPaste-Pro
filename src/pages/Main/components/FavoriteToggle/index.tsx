@@ -1,19 +1,19 @@
+import { StarFilled, StarOutlined } from "@ant-design/icons";
 import clsx from "clsx";
 import { useContext } from "react";
-import UnoIcon from "@/components/UnoIcon";
 import { MainContext } from "../..";
 
 const FavoriteToggle = () => {
   const { rootState } = useContext(MainContext);
   const isChecked = rootState.group === "favorite";
 
+  const Icon = isChecked ? StarFilled : StarOutlined;
+
   return (
-    <UnoIcon
+    <Icon
       className={clsx("cursor-pointer transition-colors hover:text-primary", {
         "text-gold!": isChecked,
       })}
-      hoverable
-      name={isChecked ? "i-iconamoon:star-fill" : "i-iconamoon:star"}
       onClick={() => {
         if (isChecked) {
           rootState.group = "all"; // Toggle off

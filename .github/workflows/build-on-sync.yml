@@ -1,6 +1,9 @@
 name: Build on Sync
 
 on:
+  push:
+    branches:
+      - master
   workflow_call:
   workflow_dispatch:
     inputs:
@@ -83,7 +86,7 @@ jobs:
           compression-level: 0
 
       - name: Create Release
-        if: github.event.inputs.create_release != 'false'
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.create_release != 'false'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.version.outputs.version }}
@@ -143,4 +146,4 @@ jobs:
           prerelease: true
           files: dist/*.exe
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN || github.token }}

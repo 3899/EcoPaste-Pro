@@ -1,8 +1,8 @@
+import { SettingOutlined } from "@ant-design/icons";
 import { Flex } from "antd";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 import { useSnapshot } from "valtio";
-import UnoIcon from "@/components/UnoIcon";
 import { showWindow } from "@/plugins/window";
 import { clipboardStore } from "@/stores/clipboard";
 import { isLinux, isWin } from "@/utils/is";
@@ -10,6 +10,7 @@ import DateFilter from "../DateFilter";
 import FavoriteToggle from "../FavoriteToggle";
 import GroupList from "../GroupList";
 import HistoryList from "../HistoryList";
+import HistoryScopeToggle from "../HistoryScopeToggle";
 import SearchInput from "../SearchInput";
 import WindowPin from "../WindowPin";
 
@@ -32,9 +33,8 @@ const StandardMode = () => {
         <SearchInput className="flex-1" />
         <Flex align="center" className="text-color-2 text-lg" gap={12}>
           <WindowPin />
-          <UnoIcon
-            hoverable
-            name="i-lets-icons:setting-alt-line"
+          <SettingOutlined
+            className="cursor-pointer transition-colors hover:text-primary"
             onClick={() => {
               showWindow("preference");
             }}
@@ -51,7 +51,7 @@ const StandardMode = () => {
       >
         <Flex
           align="center"
-          className="overflow-hidden px-3"
+          className="h-6 shrink-0 overflow-hidden px-3"
           data-tauri-drag-region
           justify="space-between"
         >
@@ -59,6 +59,7 @@ const StandardMode = () => {
 
           <Flex align="center" className="text-color-2 text-lg" gap={10}>
             <FavoriteToggle />
+            <HistoryScopeToggle />
             <DateFilter />
           </Flex>
         </Flex>

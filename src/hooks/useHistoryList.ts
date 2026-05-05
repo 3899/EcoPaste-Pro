@@ -15,6 +15,8 @@ interface Options {
   scrollToTop: () => void;
 }
 
+const RECENT_HISTORY_DAYS = 7;
+
 export const useHistoryList = (options: Options) => {
   const { scrollToTop } = options;
   const { rootState } = useContext(MainContext);
@@ -38,7 +40,8 @@ export const useHistoryList = (options: Options) => {
 
       const list = await selectHistory((qb) => {
         const { size } = state;
-        const { group, search, dateRange, filterTags } = rootState;
+        const { group, search, dateRange, filterTags, historyScope } =
+          rootState;
         const isFavoriteGroup = group === "favorite";
         const isLinksGroup = group === "links";
         const isColorsGroup = group === "colors";
@@ -53,6 +56,18 @@ export const useHistoryList = (options: Options) => {
           !isCodeGroup;
 
         return qb
+          .$if(historyScope === "recent" && !dateRange, (eb) => {
+            const recentStart = dayjs()
+              .subtract(RECENT_HISTORY_DAYS, "day")
+              .format("YYYY-MM-DD HH:mm:ss");
+
+            return eb.where((eb) =>
+              eb.or([
+                eb("favorite", "=", true),
+                eb("createTime", ">=", recentStart),
+              ]),
+            );
+          })
           .$if(!!dateRange, (eb) => {
             return eb.where((eb) =>
               eb.or([
@@ -191,6 +206,7 @@ export const useHistoryList = (options: Options) => {
     rootState.activeId = rootState.list[0]?.id;
   }, [
     rootState.group,
+    rootState.historyScope,
     rootState.search,
     rootState.dateRange,
     rootState.filterTags,

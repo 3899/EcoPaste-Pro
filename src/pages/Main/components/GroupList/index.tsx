@@ -1,9 +1,19 @@
+import {
+  AppstoreOutlined,
+  BgColorsOutlined,
+  CodeOutlined,
+  FileOutlined,
+  FontSizeOutlined,
+  LinkOutlined,
+  MailOutlined,
+  PictureOutlined,
+} from "@ant-design/icons";
 import { useKeyPress } from "ahooks";
 import clsx from "clsx";
+import type { ComponentType } from "react";
 import { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Scrollbar from "@/components/Scrollbar";
-import UnoIcon from "@/components/UnoIcon";
 import { useTauriFocus } from "@/hooks/useTauriFocus";
 import { clipboardStore } from "@/stores/clipboard";
 import type { DatabaseSchemaGroup } from "@/types/database";
@@ -26,44 +36,46 @@ const GroupList = () => {
     },
   });
 
-  const presetGroups: (DatabaseSchemaGroup & { icon: string })[] = [
+  const presetGroups: (DatabaseSchemaGroup & {
+    Icon: ComponentType<{ className?: string }>;
+  })[] = [
     {
-      icon: "i-lucide:layout-grid",
+      Icon: AppstoreOutlined,
       id: "all",
       name: t("clipboard.label.tab.all"),
     },
     {
-      icon: "i-lucide:type",
+      Icon: FontSizeOutlined,
       id: "text",
       name: t("clipboard.label.tab.text"),
     },
     {
-      icon: "i-lucide:image",
+      Icon: PictureOutlined,
       id: "image",
       name: t("clipboard.label.tab.image"),
     },
     {
-      icon: "i-lucide:link",
+      Icon: LinkOutlined,
       id: "links",
       name: t("clipboard.label.tab.links", "链接"),
     },
     {
-      icon: "i-lucide:palette",
+      Icon: BgColorsOutlined,
       id: "colors",
       name: t("clipboard.label.tab.colors", "颜色"),
     },
     {
-      icon: "i-lucide:mail",
+      Icon: MailOutlined,
       id: "email",
       name: t("clipboard.label.tab.email", "邮箱"),
     },
     {
-      icon: "i-lucide:code",
+      Icon: CodeOutlined,
       id: "code",
       name: t("clipboard.label.tab.code", "代码"),
     },
     {
-      icon: "i-lucide:file-box",
+      Icon: FileOutlined,
       id: "files",
       name: t("clipboard.label.tab.files"),
     },
@@ -85,22 +97,20 @@ const GroupList = () => {
   });
 
   return (
-    <Scrollbar data-tauri-drag-region>
-      <div className="flex gap-[10px]">
+    <Scrollbar className="min-w-0 flex-1" data-tauri-drag-region>
+      <div className="flex h-6 items-center gap-[10px]">
         {presetGroups.map((item) => {
-          const { id, name, icon } = item;
+          const { id, name, Icon } = item;
           const isChecked = id === rootState.group;
 
           return (
-            <UnoIcon
+            <Icon
               className={clsx(
                 "flex-shrink-0 cursor-pointer text-lg! transition-colors",
                 isChecked ? "text-primary!" : "text-color-2",
               )}
-              hoverable
               id={id}
               key={id}
-              name={icon}
               onClick={() => {
                 rootState.group = id;
               }}

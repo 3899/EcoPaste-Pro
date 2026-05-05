@@ -1,4 +1,19 @@
 import {
+  CodeOutlined,
+  CopyOutlined,
+  DeleteOutlined,
+  EditOutlined,
+  FileTextOutlined,
+  FolderOpenOutlined,
+  GlobalOutlined,
+  HolderOutlined,
+  PictureOutlined,
+  SendOutlined,
+  SnippetsOutlined,
+  StarFilled,
+  StarOutlined,
+} from "@ant-design/icons";
+import {
   closestCenter,
   DndContext,
   type DragEndEvent,
@@ -16,10 +31,10 @@ import { CSS } from "@dnd-kit/utilities";
 import { useBoolean, useCreation } from "ahooks";
 import { Button, Checkbox, Flex, Modal, Transfer } from "antd";
 import type { TransferCustomListBodyProps } from "antd/lib/transfer/list";
+import type { ComponentType } from "react";
 import { useTranslation } from "react-i18next";
 import { useSnapshot } from "valtio";
 import ProListItem from "@/components/ProListItem";
-import UnoIcon from "@/components/UnoIcon";
 import { clipboardStore } from "@/stores/clipboard";
 import { transferStore } from "@/stores/transfer";
 import type { OperationButton as Key } from "@/types/store";
@@ -27,71 +42,71 @@ import type { OperationButton as Key } from "@/types/store";
 interface TransferData {
   key: Key;
   title: string;
-  icon: string;
-  activeIcon?: string;
+  Icon: ComponentType<{ className?: string; title?: string }>;
+  ActiveIcon?: ComponentType<{ className?: string; title?: string }>;
 }
 
 export const transferData: TransferData[] = [
   {
-    icon: "i-lucide:copy",
+    Icon: CopyOutlined,
     key: "copy",
     title:
       "preference.clipboard.content_settings.label.operation_button_option.copy",
   },
   {
-    icon: "i-lucide:clipboard-paste",
+    Icon: SnippetsOutlined,
     key: "pastePlain",
     title:
       "preference.clipboard.content_settings.label.operation_button_option.paste_plain",
   },
   {
-    icon: "i-lucide:clipboard-pen-line",
+    Icon: FileTextOutlined,
     key: "note",
     title:
       "preference.clipboard.content_settings.label.operation_button_option.notes",
   },
   {
-    activeIcon: "i-iconamoon:star-fill",
-    icon: "i-iconamoon:star",
+    ActiveIcon: StarFilled,
+    Icon: StarOutlined,
     key: "star",
     title:
       "preference.clipboard.content_settings.label.operation_button_option.favorite",
   },
   {
-    icon: "i-lucide:trash",
+    Icon: DeleteOutlined,
     key: "delete",
     title:
       "preference.clipboard.content_settings.label.operation_button_option.delete",
   },
   {
-    icon: "i-lucide:globe",
+    Icon: GlobalOutlined,
     key: "openBrowser",
     title:
       "preference.clipboard.content_settings.label.operation_button_option.open_browser",
   },
   {
-    icon: "i-lucide:image",
+    Icon: PictureOutlined,
     key: "previewImage",
     title:
       "preference.clipboard.content_settings.label.operation_button_option.preview_image",
   },
   {
-    icon: "i-lucide:edit",
+    Icon: EditOutlined,
     key: "edit",
     title: "clipboard.button.context_menu.edit",
   },
   {
-    icon: "i-lucide:folder-open",
+    Icon: FolderOpenOutlined,
     key: "openFolder",
     title: "clipboard.button.context_menu.show_in_file_explorer",
   },
   {
-    icon: "i-lucide:terminal",
+    Icon: CodeOutlined,
     key: "runCommand",
     title: "clipboard.button.context_menu.run_command",
   },
   {
-    icon: "i-lucide:send",
+    Icon: SendOutlined,
     key: "push",
     title:
       "preference.clipboard.content_settings.label.operation_button_option.push",
@@ -146,11 +161,7 @@ const SortableItem = ({
       {...attributes}
       {...listeners}
     >
-      <UnoIcon
-        className="cursor-grab text-color-3"
-        name="i-lucide:grip-vertical"
-        size={14}
-      />
+      <HolderOutlined className="cursor-grab text-color-3 text-sm" />
       <div
         className="ant-tree-checkbox ant-checkbox-wrapper m-r-1 flex-shrink-0 cursor-pointer"
         onPointerDown={(e) => e.stopPropagation()}
@@ -205,11 +216,11 @@ const OperationButton = () => {
   };
 
   const renderTransferData = (data: TransferData) => {
-    const { key, icon, title } = data;
+    const { key, Icon, title } = data;
 
     return (
       <Flex align="center" className="max-w-31.25 flex-1" gap={4} key={key}>
-        <UnoIcon name={icon} />
+        <Icon />
         <span className="truncate">{t(title)}</span>
       </Flex>
     );
@@ -275,7 +286,9 @@ const OperationButton = () => {
         width={520}
       >
         <Transfer
-          dataSource={transferData.filter(d => d.key !== "push" || transferStore.push.masterEnabled)}
+          dataSource={transferData.filter(
+            (d) => d.key !== "push" || transferStore.push.masterEnabled,
+          )}
           onChange={(keys) => {
             clipboardStore.content.operationButtons = keys as any[];
           }}

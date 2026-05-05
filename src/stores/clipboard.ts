@@ -14,6 +14,7 @@ export const clipboardStore = proxy<ClipboardStore>({
     copyPlain: false,
     defaultCollapse: false,
     deleteConfirm: true,
+    deleteSkipConfirmWithShift: false,
     displayLines: 4,
     enableCodeHighlighting: true,
     enableTextSelection: true,

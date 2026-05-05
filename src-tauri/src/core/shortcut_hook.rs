@@ -32,7 +32,7 @@ pub fn start_double_modifier_listener(app_handle: AppHandle) {
 
         let mut last_key: Option<(Key, SystemTime)> = None;
 
-        if let Err(_error) = rdev::listen(move |event| {
+        if let Err(error) = rdev::listen(move |event| {
             if let EventType::KeyPress(key) = event.event_type {
                 let now = SystemTime::now();
 
@@ -62,7 +62,10 @@ pub fn start_double_modifier_listener(app_handle: AppHandle) {
                 }
             }
         }) {
-            eprintln!("Error starting rdev double-modifier listener");
+            log::error!("Error starting rdev double-modifier listener: {error:?}");
+            crate::core::crash_log::append_event(format!(
+                "Error starting rdev double-modifier listener: {error:?}"
+            ));
         }
     });
 }

@@ -4,6 +4,7 @@
       "digestAlgorithm": "sha256",
       "nsis": {
         "displayLanguageSelector": true,
+        "installerHooks": "./nsis-hooks.nsh",
         "installMode": "both",
         "languages": ["English", "SimpChinese"]
       }
