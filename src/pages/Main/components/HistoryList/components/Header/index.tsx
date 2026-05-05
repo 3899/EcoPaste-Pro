@@ -24,7 +24,7 @@ interface HeaderProps {
   data: DatabaseSchemaHistory;
   handleNote: () => void;
   handleFavorite: () => void;
-  handleDelete: () => void;
+  handleDelete: (options?: { skipConfirm?: boolean }) => void;
   handleEdit: () => void;
 }
 
@@ -124,7 +124,12 @@ const Header: FC<HeaderProps> = (props) => {
       case "star":
         return handleFavorite();
       case "delete":
-        return handleDelete();
+        return handleDelete({
+          skipConfirm:
+            content.deleteSkipConfirmWithShift &&
+            event.button === 0 &&
+            event.shiftKey,
+        });
       case "openBrowser": {
         const urlStr = value as string;
         return openUrl(urlStr.startsWith("http") ? urlStr : `http://${urlStr}`);

@@ -62,7 +62,10 @@ export const useContextMenu = (props: UseContextMenuProps) => {
 
     if (nextFavorite) {
       import("@/stores/transfer").then(async ({ transferStore: ts }) => {
-        if (ts.push.masterEnabled && ts.push.autoPushMode === "favorites_only") {
+        if (
+          ts.push.masterEnabled &&
+          ts.push.autoPushMode === "favorites_only"
+        ) {
           try {
             const { invoke } = await import("@tauri-apps/api/core");
             const config = await invoke("plugin:transfer|get_transfer_config");
@@ -75,19 +78,19 @@ export const useContextMenu = (props: UseContextMenuProps) => {
             if (providers.length === 0) return;
 
             await invoke("plugin:transfer|push_clipboard_item", {
-              item: buildTransferPushItem(data),
               config,
+              item: buildTransferPushItem(data),
               nonSensitive: {
-                providers,
-                service_port: ts.receive.port,
-                bark_level: ts.push.barkLevel,
-                bark_auto_copy: ts.push.barkAutoCopy,
                 bark_archive: ts.push.barkArchive,
-                bark_group_mode: ts.push.barkGroupMode,
+                bark_auto_copy: ts.push.barkAutoCopy,
                 bark_group_mapping: ts.push.barkGroupMapping,
+                bark_group_mode: ts.push.barkGroupMode,
+                bark_level: ts.push.barkLevel,
+                image_local_directory: ts.push.imageLocalDirectory,
                 image_strategy: ts.push.imageStrategy,
                 image_ttl_seconds: ts.push.imageTtlSeconds,
-                image_local_directory: ts.push.imageLocalDirectory,
+                providers,
+                service_port: ts.receive.port,
                 webhook_payload_template: ts.push.webhookPayloadTemplate,
               },
             });
@@ -159,7 +162,7 @@ export const useContextMenu = (props: UseContextMenuProps) => {
     revealItemInDir(file);
   };
 
-  const handleDelete = async () => {
+  const handleDelete = async (options?: { skipConfirm?: boolean }) => {
     const matched = find(rootState.list, { id });
 
     if (!matched) return;
@@ -167,7 +170,7 @@ export const useContextMenu = (props: UseContextMenuProps) => {
     let confirmed = true;
     deleteLocalFileRef.current = true;
 
-    if (clipboardStore.content.deleteConfirm) {
+    if (clipboardStore.content.deleteConfirm && !options?.skipConfirm) {
       const { Checkbox } = await import("antd");
       const { createElement } = await import("react");
 
@@ -375,20 +378,21 @@ export const useContextMenu = (props: UseContextMenuProps) => {
           if (providers.length === 0) return;
 
           await invoke("plugin:transfer|push_clipboard_item", {
-            item: buildTransferPushItem(data),
             config: creds,
+            item: buildTransferPushItem(data),
             nonSensitive: {
-              providers,
-              service_port: transferStore.receive.port,
-              bark_level: transferStore.push.barkLevel,
-              bark_auto_copy: transferStore.push.barkAutoCopy,
               bark_archive: transferStore.push.barkArchive,
-              bark_group_mode: transferStore.push.barkGroupMode,
+              bark_auto_copy: transferStore.push.barkAutoCopy,
               bark_group_mapping: transferStore.push.barkGroupMapping,
+              bark_group_mode: transferStore.push.barkGroupMode,
+              bark_level: transferStore.push.barkLevel,
+              image_local_directory: transferStore.push.imageLocalDirectory,
               image_strategy: transferStore.push.imageStrategy,
               image_ttl_seconds: transferStore.push.imageTtlSeconds,
-              image_local_directory: transferStore.push.imageLocalDirectory,
-              webhook_payload_template: transferStore.push.webhookPayloadTemplate,
+              providers,
+              service_port: transferStore.receive.port,
+              webhook_payload_template:
+                transferStore.push.webhookPayloadTemplate,
             },
           });
         } catch {
@@ -413,7 +417,11 @@ export const useContextMenu = (props: UseContextMenuProps) => {
 
     // 文件类型
     if (type === "files") {
-      return [[copy, pastePath], [pushItem, showInExplorer], [fav, note, del]];
+      return [
+        [copy, pastePath],
+        [pushItem, showInExplorer],
+        [fav, note, del],
+      ];
     }
 
     // 富文本类型
@@ -476,15 +484,27 @@ export const useContextMenu = (props: UseContextMenuProps) => {
     }
 
     if (isMarkdown) {
-      return [[copy, paste], [pushItem, exportFile], [edit, fav, note, del]];
+      return [
+        [copy, paste],
+        [pushItem, exportFile],
+        [edit, fav, note, del],
+      ];
     }
 
     if (isCode) {
-      return [[copy, paste], [pushItem, exportFile], [edit, fav, note, del]];
+      return [
+        [copy, paste],
+        [pushItem, exportFile],
+        [edit, fav, note, del],
+      ];
     }
 
     // 默认：纯文本
-    return [[copy, paste], [pushItem, exportFile], [edit, fav, note, del]];
+    return [
+      [copy, paste],
+      [pushItem, exportFile],
+      [edit, fav, note, del],
+    ];
   };
 
   const handleContextMenu = async (event: MouseEvent) => {

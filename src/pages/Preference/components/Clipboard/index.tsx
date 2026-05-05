@@ -133,6 +133,19 @@ const ClipboardSettings = () => {
           )}
           value={content.deleteConfirm}
         />
+
+        <ProSwitch
+          description={t(
+            "preference.clipboard.content_settings.hints.delete_skip_confirm_with_shift",
+          )}
+          onChange={(value) => {
+            clipboardStore.content.deleteSkipConfirmWithShift = value;
+          }}
+          title={t(
+            "preference.clipboard.content_settings.label.delete_skip_confirm_with_shift",
+          )}
+          value={content.deleteSkipConfirmWithShift}
+        />
       </ProList>
 
       <ProList header={t("preference.clipboard.display_settings.title")}>

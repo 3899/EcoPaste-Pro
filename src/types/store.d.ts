@@ -98,6 +98,7 @@ export interface ClipboardStore {
     autoFavorite: boolean;
     enableTextSelection: boolean;
     deleteConfirm: boolean;
+    deleteSkipConfirmWithShift: boolean;
     autoSort: boolean;
     showOriginalContent: boolean;
     displayLines: number; // 显示行数，默认 4
