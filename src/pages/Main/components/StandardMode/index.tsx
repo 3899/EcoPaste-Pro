@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { useSnapshot } from "valtio";
 import UnoIcon from "@/components/UnoIcon";
+import { showWindow } from "@/plugins/window";
 import { clipboardStore } from "@/stores/clipboard";
 import { globalStore } from "@/stores/global";
 import { isLinux, isWin } from "@/utils/is";

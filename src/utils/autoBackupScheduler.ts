@@ -133,7 +133,7 @@ function computeDelay(config: ScheduleConfig): number {
 async function executeBackup(lite: boolean) {
   try {
     const fileName = await getDefaultWebdavBackupFileName(undefined, lite);
-    await backupToWebdav(fileName, lite);
+    await backupToWebdav(fileName, lite, clipboardStore.webdav.maxBackups);
     clipboardStore.webdav.lastBackupStatus = "success";
     clipboardStore.webdav.lastBackupAt = formatDate();
     clipboardStore.webdav.lastBackupMode = lite ? "lite" : "full";

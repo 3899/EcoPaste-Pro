@@ -5,6 +5,7 @@ use quick_xml::events::Event;
 use quick_xml::Reader;
 use reqwest::header::{HeaderMap, HeaderValue};
 use reqwest::{Client, Method, StatusCode};
+use rusqlite::types::Value;
 use rusqlite::{params, Connection};
 use serde::{Deserialize, Serialize};
 use std::fs;
@@ -427,12 +428,16 @@ pub async fn create_slim_database(
     source_db_path: String,
     target_db_path: String,
 ) -> Result<(), String> {
-    let source = Connection::open(&source_db_path).map_err(|e| e.to_string())?;
-    if let Some(parent) = PathBuf::from(&target_db_path).parent() {
+    create_slim_database_inner(&source_db_path, &target_db_path)
+}
+
+fn create_slim_database_inner(source_db_path: &str, target_db_path: &str) -> Result<(), String> {
+    let source = Connection::open(source_db_path).map_err(|e| e.to_string())?;
+    if let Some(parent) = PathBuf::from(target_db_path).parent() {
         fs::create_dir_all(parent).map_err(|e| e.to_string())?;
     }
-    let _ = fs::remove_file(&target_db_path);
-    let mut target = Connection::open(&target_db_path).map_err(|e| e.to_string())?;
+    let _ = fs::remove_file(target_db_path);
+    let mut target = Connection::open(target_db_path).map_err(|e| e.to_string())?;
     target
         .execute_batch(
             "CREATE TABLE IF NOT EXISTS history (
@@ -457,27 +462,27 @@ pub async fn create_slim_database(
     let mut stmt = source
         .prepare(
             "SELECT id, type, \"group\", value, search, count, width, height, favorite, createTime, note, subtype, sourceAppName, sourceAppIcon
-             FROM history WHERE \"group\" NOT IN ('image', 'files')",
+             FROM history WHERE \"group\" IS NULL OR \"group\" NOT IN ('image', 'files')",
         )
         .map_err(|e| e.to_string())?;
 
     let rows = stmt
         .query_map([], |row| {
             Ok((
-                row.get::<_, String>(0)?,
-                row.get::<_, String>(1)?,
-                row.get::<_, String>(2)?,
-                row.get::<_, String>(3)?,
-                row.get::<_, Option<String>>(4)?,
-                row.get::<_, Option<i64>>(5)?,
-                row.get::<_, Option<i64>>(6)?,
-                row.get::<_, Option<i64>>(7)?,
-                row.get::<_, Option<i64>>(8)?,
-                row.get::<_, Option<String>>(9)?,
-                row.get::<_, Option<String>>(10)?,
-                row.get::<_, Option<String>>(11)?,
-                row.get::<_, Option<String>>(12)?,
-                row.get::<_, Option<String>>(13)?,
+                row.get::<_, Value>(0)?,
+                row.get::<_, Value>(1)?,
+                row.get::<_, Value>(2)?,
+                row.get::<_, Value>(3)?,
+                row.get::<_, Value>(4)?,
+                row.get::<_, Value>(5)?,
+                row.get::<_, Value>(6)?,
+                row.get::<_, Value>(7)?,
+                row.get::<_, Value>(8)?,
+                row.get::<_, Value>(9)?,
+                row.get::<_, Value>(10)?,
+                row.get::<_, Value>(11)?,
+                row.get::<_, Value>(12)?,
+                row.get::<_, Value>(13)?,
             ))
         })
         .map_err(|e| e.to_string())?;
@@ -524,4 +529,82 @@ pub async fn create_slim_database(
     }
     tx.commit().map_err(|e| e.to_string())?;
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::time::{SystemTime, UNIX_EPOCH};
+
+    fn temp_db_path(label: &str) -> PathBuf {
+        let nonce = SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .expect("system clock should be after Unix epoch")
+            .as_nanos();
+        std::env::temp_dir().join(format!(
+            "ecopaste-webdav-{label}-{}-{nonce}.db",
+            std::process::id()
+        ))
+    }
+
+    #[test]
+    fn slim_database_preserves_null_fields_and_null_group_rows() {
+        let source_path = temp_db_path("source");
+        let target_path = temp_db_path("target");
+        let source = Connection::open(&source_path).expect("create source database");
+        source
+            .execute_batch(
+                "CREATE TABLE history (
+                    id TEXT PRIMARY KEY,
+                    type TEXT,
+                    \"group\" TEXT,
+                    value TEXT,
+                    search TEXT,
+                    count INTEGER,
+                    width INTEGER,
+                    height INTEGER,
+                    favorite INTEGER,
+                    createTime TEXT,
+                    note TEXT,
+                    subtype TEXT,
+                    sourceAppName TEXT,
+                    sourceAppIcon TEXT
+                );
+                INSERT INTO history (id, type, \"group\", value) VALUES ('legacy', NULL, NULL, NULL);
+                INSERT INTO history (id, type, \"group\", value) VALUES ('image', 'image', 'image', 'ignored');",
+            )
+            .expect("seed source database");
+        drop(source);
+
+        create_slim_database_inner(
+            source_path.to_str().expect("UTF-8 source path"),
+            target_path.to_str().expect("UTF-8 target path"),
+        )
+        .expect("create slim database");
+
+        let target = Connection::open(&target_path).expect("open target database");
+        let row = target
+            .query_row(
+                "SELECT id, type, \"group\", value FROM history",
+                [],
+                |row| {
+                    Ok((
+                        row.get::<_, String>(0)?,
+                        row.get::<_, Option<String>>(1)?,
+                        row.get::<_, Option<String>>(2)?,
+                        row.get::<_, Option<String>>(3)?,
+                    ))
+                },
+            )
+            .expect("read copied row");
+        assert_eq!(row, ("legacy".to_string(), None, None, None));
+        let count: i64 = target
+            .query_row("SELECT COUNT(*) FROM history", [], |row| row.get(0))
+            .expect("count copied rows");
+        assert_eq!(count, 1);
+        drop(target);
+
+        let _ = fs::remove_file(source_path);
+        let _ = fs::remove_file(target_path);
+    }
 }

@@ -17,10 +17,11 @@ import {
   pasteToClipboard,
 } from "@/plugins/clipboard";
 import {
+  hideWindow,
+  setWindowPinned,
   showTaskbarIcon,
   showWindow,
   toggleWindowVisible,
-  setWindowPinned,
 } from "@/plugins/window";
 import { clipboardStore } from "@/stores/clipboard";
 import { globalStore } from "@/stores/global";
