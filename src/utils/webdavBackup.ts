@@ -3,10 +3,12 @@ import { remove } from "@tauri-apps/plugin-fs";
 import { decompress, fullName } from "tauri-plugin-fs-pro-api";
 import {
   createSlimDatabase,
+  deleteWebdavBackup,
   downloadWebdavBackup,
   listWebdavBackups,
   uploadWebdavBackup,
 } from "@/plugins/webdav";
+import { hotReloadData } from "@/utils/hotReload";
 import {
   getBackupExtname,
   getSaveDatabasePath,
@@ -14,7 +16,6 @@ import {
   join,
 } from "@/utils/path";
 import { saveStore } from "@/utils/store";
-import { hotReloadData } from "@/utils/hotReload";
 import {
   cleanupPaths,
   compressStaging,
@@ -24,6 +25,9 @@ import {
 } from "./backupArchive";
 import type { BackupMode } from "./backupFilename";
 import { buildBackupBasename } from "./backupFilename";
+import { selectExcessWebdavBackups } from "./webdavRetention";
+
+let retentionQueue = Promise.resolve();
 
 /**
  * Normalize WebDAV backup file name (ensure correct extension)
@@ -65,8 +69,36 @@ export const getDefaultWebdavBackupFileName = async (
  */
 export const listWebdavBackupFiles = async () => {
   const list = await listWebdavBackups();
-  const ext = getBackupExtname();
-  return list.filter((item) => item.fileName.endsWith(`.${ext}`));
+  const suffix = `.${getBackupExtname()}`.toLowerCase();
+  return list.filter((item) => item.fileName.toLowerCase().endsWith(suffix));
+};
+
+export const trimWebdavBackupFiles = (
+  maxBackups: number,
+  currentFileName?: string,
+) => {
+  if (!Number.isFinite(maxBackups) || maxBackups <= 0) {
+    return Promise.resolve();
+  }
+
+  const trim = async () => {
+    const backups = await listWebdavBackupFiles();
+    const excess = selectExcessWebdavBackups(
+      backups,
+      maxBackups,
+      currentFileName,
+    );
+    for (const backup of excess) {
+      await deleteWebdavBackup(backup.fileName);
+    }
+  };
+
+  const result = retentionQueue.then(trim, trim);
+  retentionQueue = result.then(
+    () => undefined,
+    () => undefined,
+  );
+  return result;
 };
 
 /**
@@ -108,12 +140,17 @@ export { cleanupPaths as cleanupBackupFiles };
 /**
  * Backup to WebDAV
  */
-export const backupToWebdav = async (fileName: string, lite: boolean) => {
+export const backupToWebdav = async (
+  fileName: string,
+  lite: boolean,
+  maxBackups = 0,
+) => {
   const resolvedName = normalizeWebdavBackupFileName(fileName);
   const { archivePath, cleanupPaths: cleanups } =
     await createWebdavBackupArchive(resolvedName, lite);
   try {
     await uploadWebdavBackup(archivePath, resolvedName);
+    await trimWebdavBackupFiles(maxBackups, resolvedName);
   } finally {
     await cleanupPaths([archivePath, ...cleanups]);
   }

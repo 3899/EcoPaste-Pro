@@ -185,21 +185,6 @@ const Webdav = (props: { state: State }) => {
     if (mode) clipboardStore.webdav.lastBackupMode = mode;
   };
 
-  const trimBackups = async () => {
-    const maxBackups = clipboardStore.webdav.maxBackups;
-    if (maxBackups <= 0) return;
-    const list = await listWebdavBackupFiles();
-    const sorted = list
-      .map((item) => ({
-        ...item,
-        timeValue: parseTimeValue(item.fileName) || 0,
-      }))
-      .sort((a, b) => b.timeValue - a.timeValue);
-    const excess = sorted.slice(maxBackups);
-    if (excess.length === 0) return;
-    await Promise.all(excess.map((item) => deleteWebdavBackup(item.fileName)));
-  };
-
   const handleBackupConfirm = async () => {
     let name = backupName.trim();
     if (!name) return;
@@ -212,8 +197,11 @@ const Webdav = (props: { state: State }) => {
     try {
       setUploading(true);
       await saveConfig();
-      await backupToWebdav(fileName, webdav.manualLite);
-      await trimBackups();
+      await backupToWebdav(
+        fileName,
+        webdav.manualLite,
+        clipboardStore.webdav.maxBackups,
+      );
       updateStatus("success", undefined, webdav.manualLite ? "lite" : "full");
       message.success(t("preference.data_backup.webdav.hints.backup_success"));
       setBackupOpen(false);
