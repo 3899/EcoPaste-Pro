@@ -1,10 +1,10 @@
 <a href="https://github.com/3899/EcoPaste-Pro">
-  <img src="https://socialify.git.ci/3899/EcoPaste-Pro/image?description=1&descriptionEditable=Open%20source%20clipboard%20management%20tools%20for%20Windows%2C%20MacOS%20and%20Linux(x11).&font=Source%20Code%20Pro&logo=https%3A%2F%2Fgithub.com%2FEcoPasteHub%2FEcoPaste%2Fblob%2Fmaster%2Fpublic%2Flogo.png%3Fraw%3Dtrue&name=1&owner=1&pattern=Floating%20Cogs&theme=Auto" alt="EcoPaste" />
+  <img src="https://socialify.git.ci/3899/EcoPaste-Pro/image?description=1&descriptionEditable=Open%20source%20clipboard%20management%20tool%20tailored%20for%20Windows.&font=Source%20Code%20Pro&logo=https%3A%2F%2Fgithub.com%2FEcoPasteHub%2FEcoPaste%2Fblob%2Fmaster%2Fpublic%2Flogo.png%3Fraw%3Dtrue&name=1&owner=1&pattern=Floating%20Cogs&theme=Auto" alt="EcoPaste" />
 </a>
 
 <div align="center">
   <br/>
-  
+
   <div>
       English | <a href="./README.md">简体中文</a> | <a href="./README.zh-TW.md">繁體中文</a> | <a href="./README.ja-JP.md">日本語</a>
   </div>
@@ -17,22 +17,7 @@
         alt="Windows"
         src="https://img.shields.io/badge/-Windows-blue?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB0PSIxNzI2MzA1OTcxMDA2IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjE1NDgiIHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4Ij48cGF0aCBkPSJNNTI3LjI3NTU1MTYxIDk2Ljk3MTAzMDEzdjM3My45OTIxMDY2N2g0OTQuNTEzNjE5NzVWMTUuMDI2NzU3NTN6TTUyNy4yNzU1NTE2MSA5MjguMzIzNTA4MTVsNDk0LjUxMzYxOTc1IDgwLjUyMDI4MDQ5di00NTUuNjc3NDcxNjFoLTQ5NC41MTM2MTk3NXpNNC42NzA0NTEzNiA0NzAuODMzNjgyOTdINDIyLjY3Njg1OTI1VjExMC41NjM2ODE5N2wtNDE4LjAwNjQwNzg5IDY5LjI1Nzc5NzUzek00LjY3MDQ1MTM2IDg0Ni43Njc1OTcwM0w0MjIuNjc2ODU5MjUgOTE0Ljg2MDMxMDEzVjU1My4xNjYzMTcwM0g0LjY3MDQ1MTM2eiIgcC1pZD0iMTU0OSIgZmlsbD0iI2ZmZmZmZiI+PC9wYXRoPjwvc3ZnPg=="
       />
-    </a >  
-    <a href="https://github.com/3899/EcoPaste-Pro/releases">
-      <img
-        alt="MacOS"
-        src="https://img.shields.io/badge/-MacOS-black?style=flat-square&logo=apple&logoColor=white"
-      />
     </a >
-    <a href="https://github.com/3899/EcoPaste-Pro/releases">
-      <img 
-        alt="Linux"
-        src="https://img.shields.io/badge/-Linux-yellow?style=flat-square&logo=linux&logoColor=white" 
-      />
-    </a>
-  </div>
-
-  <div>
     <a href="./LICENSE">
       <img
         src="https://img.shields.io/github/license/3899/EcoPaste-Pro?style=flat-square"
@@ -49,323 +34,92 @@
       />  
     </a >
   </div>
-  
-  <br/>
-
-  <picture>
-    <img src="./static/Clipboard.png" width="100%" alt="Clipboard" />
-    <br/><br/>
-    <img src="./static/Settings - Clipboard.png" width="100%" alt="Settings Clipboard" />
-    <br/><br/>
-    <img src="./static/Settings - Storage Statistics.png" width="100%" alt="Storage Statistics" />
-    <br/><br/>
-    <img src="./static/Settings - Shortcuts.png" width="100%" alt="Shortcuts" />
-    <br/><br/>
-    <img src="./static/Settings - Data Backup.png" width="100%" alt="Data Backup" />
-    <br/><br/>
-    <img src="./static/Settings - Data Sync.png" width="100%" alt="Data Sync" />
-  </picture>
 </div>
 
-## 🌟 Branch Information
+# EcoPaste-Pro - Intelligent Clipboard Management Hub Tailored for Windows
 
-> This repository is a fork of [EcoPasteHub/EcoPaste](https://github.com/EcoPasteHub/EcoPaste). Building upon the official release, it restructures and introduces advanced features such as cross-device data synchronization, secure WebDAV cloud backup for data assets, and panoramic storage statistics. Additionally, it comprehensively enhances the intelligent content classification engine and the immersive experience of daily interactions.
+> **🌟 Branch Information**: This repository is an enhanced Fork of [EcoPasteHub/EcoPaste](https://github.com/EcoPasteHub/EcoPaste). Tailored specifically for the **Windows** platform, it restructures and introduces cross-device data synchronization, WebDAV secure cloud backup, panoramic storage statistics, and a 12-type intelligent content categorization engine with an immersive user experience.
 
-## 📥 Download Links
-
-### 🔗 Official Version
-- 🌐 GitHub Repository: [EcoPasteHub/EcoPaste](https://github.com/EcoPasteHub/EcoPaste)
-- 📥 Official Downloads: [Releases Page](https://github.com/EcoPasteHub/EcoPaste/releases)
-- 📚 Documentation: [EcoPaste Website](https://ecopaste.cn/)
-
-### 🔗 This Fork
-- 📥 Latest Version: [Download Latest Build from Releases](https://github.com/3899/EcoPaste-Pro/releases/latest)
-- 📚 Mobile Data Sync Guide
-  - [Android Sync Configuration Guide](docs/Android/README.md) (Providing complete setup files using Tasker as an example. Users of MacroDroid and other automation software can seamlessly adapt this logic to write their own configurations)
-  - iPhone Sync Configuration Guide (WIP, to be supplemented...)
-
-## 📖 Features
-
-- 🎉 Built with Tauri v2, lightweight and efficient, taking cross-platform experience to the next level.
-- 💻 Compatible with Windows, macOS, and Linux (X11), enabling seamless switching between devices.
-- ✨ Simple and intuitive user interface, easy to operate, zero learning curve, ready to use out of the box.
-- 📋 Supports clipboard content types like plain text, rich text, HTML, images, and files.
-- 🔒 Local data storage ensures user privacy and gives users full control over their data.
-- 📝 Notes feature allows easy categorization, management, and retrieval to boost productivity.
-- ⚙️ Rich personalization settings to meet diverse user needs and create a tailored experience.
-- 🤝 Comprehensive documentation and community support to explore and grow with developers.
-- 🧩 Continuously optimized with more exciting features waiting to be discovered.
-
-
-
-### Pro.5.x <font size="-2" color="gray">(Based on the original v0.6.0-beta.3 branch)</font>
-
-#### Pro.5.6
-
-##### ✨ New Features
-- **🖱️ Mouse Middle Button Global Control**: Support quick toggle of the clipboard via single-click or long-press of the middle mouse button. The trigger method and long-press duration can be customized to prevent accidental trigger. It does not affect system native features, automatically releases resources when disabled, and operations inside the window will not hide the window by mistake.
-- **⌨️ Brand New Shortcut Recording & Suggestions**: Upgraded the shortcut settings interface to support one-key recording of shortcuts. Click the dropdown button to view the suggestion panel for common shortcuts and modifier keys.
-- **🔒 Seamless Global Win+V Takeover**: Perfectly compatible with the Windows system clipboard, no system configuration changes needed. One-click takeover / auto-restore of the native Win+V feature with a zero-intrusion experience.
-
-##### 💫 Experience Optimizations
-- **📌 Comprehensive Optimization of Window Pinning**: Upgraded the window pin/stay-on-top capability. Pinned windows now perfectly maintain their pin state across hiding and reopening under both the top bar and sidebar navigation layouts. Furthermore, the system intelligently recognizes the pinned state in Windows no-focus mode, ensuring that clicking outside the window no longer automatically hides it.
-- **🔒 Ultimate Experience Upgrades for Windows No-Focus Silent Paste Mode**:
-  - **New `Space Bar` Search Activation**: In the inactive state, pressing the Space Bar quickly activates the search box and inputs the text.
-  - **New `ESC Key` Rapid Hiding**: In no-focus mode, pressing the `ESC` key instantly hides the window and returns it to the background.
-  - **Streamlined `Backspace` & `Delete` Key Interception**: Completely removed key interception for Backspace and Delete in the inactive state, preventing accidental deletion of clipboard data when editing external text and ensuring data safety.
-- **📐 Expanded Sidebar Navigation Mode Drag Regions**: In the sidebar navigation layout, the sidebar, window top header bar, search bar, and filter tabs are now directly draggable to move the window.
-
-##### 🐞 Bug Fixes
-- **🧹 Fixed Memory Leak Issues in Focus and Notification Events**: Optimized the event cleanup logic during component destruction. After switching navigation modes or reloading the layout, all event listeners are now properly released, completely resolving event listener accumulation, background runtime anomalies, and potential memory leaks.
-
-#### Pro.5.5
-
-##### ✨ New Features
-- **📐 Clipboard "Sidebar Navigation" Layout**: A new sidebar navigation option has been added under "Preferences - General Settings - Appearance - View Mode". When enabled, a compact sidebar is displayed on the left side of the clipboard window, vertically organizing the application logo, the eight primary categories, favorites, and settings buttons; the right side is paired with a full-width search input, creating a more rational layout and an immersive, highly efficient operational experience.
-- **🏷️ Favorites Content Type Filtering**: Under the sidebar navigation mode, clicking the favorites button reveals a top category filter bar. A toggle for showing content type labels in favorites has also been added, allowing users to check/uncheck tags like Text, Image, and Link to filter content dynamically.
-- **📋 Favorites Sorting**: Added a new "Favorites Sort" toggle (enabled by default) under the "Preferences - Clipboard - Sort Settings" group. When enabled, users can adjust the order of items via the context menu (Pin, Move Up, Move Down, Move to Bottom) or a dedicated drag handle at the top of cards. The favorites sorting functionality is completely decoupled from the auto-sort and pin-to-top rules of standard groups, enabling mutually non-interfering double-track sorting.
-- **🔍 Search Supports Space Tokenization & Wildcards**: Refactored the search retrieval logic to support splitting multiple keywords by spaces to perform intersection (AND) queries; also compatible with `*` and `?` wildcard syntax, effectively improving content retrieval precision and flexibility.
-- **🔒 New Windows No-Focus Silent Paste Mode**: Added this feature switch under "Preferences - Clipboard - Window Settings". Enabling it will automatically turn off the window's default focus. Summoning the clipboard will not steal the active window's focus, allowing for non-disruptive silent operations such as file renaming and double-click paste. Pressing the left/right arrow keys, space bar, `Ctrl+F`, `/` shortcuts, or directly clicking the search box will automatically activate and focus the window, balancing silent pasting and high-speed search retrieval.
-
-##### 💫 Experience Optimizations
-- **🗃️ Optimized Big Data Batch Deletion**: Refactored the underlying query logic for batch deletion and auto-cleanup by adopting a lightweight data retrieval scheme. Deletion no longer loads heavy text and image fields, drastically reducing memory footprint and completely eliminating interface lag and freezing during massive data cleanups.
-- **⚡ Input Debouncing for Search**: Configured a `300ms` debounce delay for the search input box, avoiding frequent database queries on consecutive inputs, and completely eliminating UI lag and frame drops during typing.
-- **🖼️ Fully Optimized Image Loading**: Enabled native lazy loading for the image component, and introduced a background multi-threaded asynchronous pre-decoding queue. Images outside the viewport are decoded and cached in advance, eliminating white placeholder flashes during scrolling and achieving a buttery-smooth browsing experience.
-
-##### 🏗️ Architecture Optimization
-- **🧹 Smart Database Maintenance**: Automatically runs query execution plan optimization post-deletion to enhance SQLite database efficiency. When more than 50 items are deleted or automatically cleaned in a single run, it automatically triggers database shrinking (VACUUM) to promptly release unused disk space.
-- **🔒 Exclusive Maintenance Lock**: Employs a singleton lock mechanism to serialize database optimization, shrinking, and other maintenance operations. This effectively prevents database locks and write conflicts in high-concurrency deletion scenarios, ensuring stable background task execution.
-- **🗄️ Deep Database Index Optimization**: Constructed multiple index groups on high-frequency filtering and sorting fields in the clipboard data table. This avoids full table scans and sorting overheads, exponentially speeding up list loading and category switching under large datasets.
-
-#### Pro.5.4
-
-##### ✨ New Features
-- **🔄 Lightweight Data Sync Module**: Added a "Data Sync" entry in preferences, divided into three modules: "Base Configuration / Push Data / Receive Data".
-- **📤 Active Push from Main UI**: Added a "Push" option to the item header actions, right-click context menu, and preference action buttons. Supports explicitly pushing a single clipboard item to external devices.
-- **⚙️ Auto-Push Strategies**: Supports three modes: "Off / Favorites Only / Custom Tags". The "Favorites Only" mode auto-pushes when an item is starred, while the custom mode filters based on specific content type tags.
-- **📡 Auto-Receive Service**: Added a local HTTP local receiving interface. Supports injecting text / html / rtf / files / image into the local history, with an option to write back to the system clipboard automatically.
-- **🖼️ Image Relay Strategies**: Pushing images supports five strategies: "Temporary LAN Direct Link / Webhook Gateway / WebDAV / Local Directory Mapping / Direct Intercept".
-- **📍 Remote Source Marking**: Contents received remotely preserve the source device info and display a remote device icon in the list.
-
-##### 💫 Experience Optimizations
-- **💻 Code Preview Wrap Optimization**: Upgraded code syntax highlighting preview to a true-height crop with automatic line wrapping. Long code lines no longer cause horizontal overflow.
-- **🎨 Enhanced HTML Readability**: Added smart theme detection and automatic text contrast correction to ensure text remains legible across both light and dark themes.
-- **♻️ Sync Loop Prevention**: Added transmission write-back fingerprint protection. Prevents "auto-copy after receiving" from triggering local listeners again, eliminating duplicate db entries and redundant push loops.
-- **🖼️ Stabilized Image Reception**: Standardized incoming images by transcoding them to PNG and injecting missing size/volume metadata. Unconventional formats like SVG / HEIC / HEIF must now be converted to standard images prior to upload.
-
-##### 🏗️ Architecture Optimization
-- **🧵 Queued Push Pipeline**: Modified push operations to use asynchronous queue processing, preventing the main clipboard listening flow from being blocked.
-- **🔐 Tiered Config Storage**: Sensitive credentials are now securely stored in the system credential manager, while standard configurations fall back to the user config file.
-
-##### 🐞 Bug Fixes
-- **🧲 Action Button Config Refactor**: Fixed the issue where custom action buttons could not be reordered via drag-and-drop in the modal. Refactored the underlying drag logic to coexist perfectly with the "Drag and Drop Backup Import" functionality.
-
-#### Pro.5.3
-
-##### ✨ New Features
-- **🚀 Global Shortcut for Paste as Plain Text**: Completely refactored the "Paste as Plain Text" shortcut capability, breaking the limitation of in-app use only and officially upgrading it to a global shortcut. One-click paste of the latest clipboard content when the app is in the background, and paste selected content when in the foreground, offering much more flexibility.
-
-##### 💫 Experience Optimizations
-- **📊 Refactored Clipboard Type Recognition Engine**: Fixed the issue where copying data from office software (Excel/WPS) was mistakenly saved as an image when the "Copy as Plain Text" mode was enabled.
-- **🎯 Smart Detection for Composite Table Data**: Addressing the extremely similar content characteristics when copying data from office software (Excel/WPS) vs. copying images from browsers, introduced a four-dimensional detection system to achieve absolutely precise targeting and clean extraction of office table data.
-- **🧹 Auto-Cleanup of Temporary Table Files**: Automatically deletes useless temporary images after recognizing tables, preventing residual files on the disk.
-- **🔘 Optimized Default Action Buttons**: Enabled 9 common quick actions by default and adjusted their order (Preferences → Clipboard → Display Settings → Action Buttons), comprehensively enhancing the out-of-the-box experience for new users.
-- **🖱️ Optimized Word Selection Paste**: Renamed "Text Snippet Selection" to "Word Selection Paste" (Preferences → Clipboard → Content Settings → Word Selection Paste) for a more intuitive expression of the feature; moved its position below "Auto Paste" in the preferences for clearer configuration.
-- **📊 Storage Stats View Space Optimization**: Deeply streamlined the redundant padding whitespace in the storage stats page, dynamically narrowing the font size and width of the left stats summary area to provide maximum visualization space for the horizontal charts.
-
-##### 🐞 Bug Fixes
-- **⌨️ Fixed Invalid Paste as Plain Text Shortcut**: Deeply refactored the underlying system-level key injection logic, resolving unresponsiveness caused by key anomalies during "Paste as Plain Text" and "Quick Paste", making paste operations more stable.
-- **📈 Fixed Stats Chart Edge Overflow**: Completely fixed the layout overflow issue where the right-side content of the stats chart was forcibly pushed out of bounds under extremely narrow window sizes.
-- **⏰ Storage Stats Time Picker Adaptive Fix**: Fixed the layout overflow issue where the exceedingly long date range selection box was pushed out of the window bounds when selecting a "Custom" time range.
-
-#### Pro.5.2
-
-##### ✨ New Features
-- **📦 Local Data Filter Support**: A completely refactored local data export engine with powerful multi-dimensional filtering, supporting scope (All/Favorites) + 12 content types. The exported backup matches exactly the filtered contents and associated images, ensuring accurate and compact backups that can be seamlessly restored.
-- **🏷️ Global Backup Naming Convention**: Unified the backup file naming convention for both WebDAV and local exports (`AppName.Timestamp.DeviceName.OS.Mode.Extension`). Introduced 4 clear backup modes: `full`, `lite`, `filter`, and `favs` (Favorites only) for more organized file management.
-- **📥 Drag and Drop Backup Import**: Added the ability to directly drag and drop local backup files to restore data. Following a successful import, the clipboard list is automatically refreshed instantly, achieving a seamless restoration without manual application restart.
-- **⌨️ Double-Click Modifier Key Activation**: Expanding beyond traditional keyboard shortcuts, this feature introduces the ability to open the clipboard window by double-tapping a modifier key (`Ctrl`, `Alt`, or `Shift`). The settings panel has been updated with a clear 'Record / Double-Click' segmented control, elegantly separating spatial shortcuts from time-based double-clicks for an intuitive configuration process.
-
-##### 💫 Experience Optimizations
-- **✂️ Automatic Edge Space Trimming**: When copying emails, links, paths, or color values, any accidental leading or trailing white spaces are intelligently stripped. This prevents such content from being misclassified as generic `Plain Text`, guaranteeing accurate type recognition.
-- **🎨 Refined Code Syntax Highlighting**: Upgraded code syntax highlighting with customized color schemes mirroring the professional aesthetics of VS Code, vastly improving readability. Implemented subtle UI refinements to smoothly blend code blocks with content cards for an immersive reading experience.
-- **🔄 Seamless Import & Restore Hot Reloading**: Comprehensively overhauled the data loading mechanisms used when `Importing Backup Files` and `Restoring from WebDAV`. This enables an instantaneous, non-disruptive hot reloading experience where the clipboard history refeshes immediately after data recovery, eliminating the need to restart the application.
-- **🛡️ Precise Clipboard Change Detection**: Optimized background listener logic to intelligently filter out "false copy" events triggered by third-party applications or the OS. The application now solely reacts to authentic clipboard content modifications, running smoother and more reliably in the background.
-- **🔍 Enhanced Source Recognition for Duplicate Copies**: When copying the exact same text or image across different applications sequentially, the source application's icon and name are now accurately updated, and the repeated item properly returns to the top of the list, providing a behavior that aligns perfectly with user intuition.
-- **🔒 Prevent Erroneous Modifications to Source Activity**: Resolved an issue in `Auto Sort` mode where a paste operation would inaccurately alter an existing clipboard record's source application, ensuring absolute fidelity in historical origin tracking.
-- **📊 Preserved Table Border Rendering**: When copying tabular data from applications like Excel, a safe, native, and non-conflicting base gridline styling is intelligently injected to exponentially increase the structural integrity and readability of the data presentation inside the application.
-- **✂️ Optimized HTML Content Rendering**: Addressed the issue of excessive, unused vertical padding appearing at the top and bottom of list cards when copying certain HTML content. Irrelevant white space is now automatically pruned to deliver a clean, compact, and beautiful layout.
-
-##### 🐞 Bug Fixes
-- **📧 Resolved Empty Email Group Display**: Fixed a stubborn issue where selecting the `Email` group occasionally displayed an empty list, failing to render the genuinely categorized email records.
-- **📌 Fixed Pinned Window Abnormal Closure Upon Pasting**: Completely resolved the behavioral bug where pasting content would forcibly and prematurely close the main clipboard window even when the `Pin Window (Stay on Top)` toggle was actively enabled.
-
-#### M05.1
-
-##### ✨ New Features (A New Space Manager Experience)
-- **📊 Panoramic Chart View**
-  - **📋 Multi-Dimensional Storage Stats Panel**: Added 12 core content types storage stats, visually displaying space usage; supports independent "All/Favorites" switching, allowing separate inspection of storage data for favorite records.
-  - **⚡ Ultra-High-Performance Stats Engine**: Refactored the physical volume tracing and dashboard stats logic. Replaced blocking Disk IO traversal with unified memory-level database queries, allowing instant loading even with tens of thousands of records and hundreds of GBs of data.
-  - **📈 Dynamic Visual Balancing Algorithm**: To handle significantly varying "long-tail data," adopted a square-root smoothing formula that ensures intuitive contrast while preventing small files from becoming "invisible."
-  - **🎯 Panoramic Data Pass-Through Interaction**: Optimized the bar chart interaction area. Hovering now reveals a floating card in real-time displaying the corresponding correct item count and accurate volume.
-- **⏳ Flexible Timeline Navigation**
-  - **⏰ Global Intelligent Time Filtering**: Built-in time filter with support for `Today`, `Yesterday`, `Last 3 Days`, `This Week`, `This Month`, and `Custom` date ranges, instantly rendering storage data for the specified period.
-  - **🔗 Fully Merged Module Response**: Time filtering perfectly synchronizes with statistical charts and detail lists. Switching times updates the visualization of data accumulations and trends instantly.
-- **🧹 Intelligent Anti-Mistake Cleanup**
-  - **🗑️ Typological Accurate Cleanup**: Supports multi-selection by content type for 1-click batch cleanup of `Unfavorited` / `Favorited` redundant history data.
-  - **🖼️ Image Deep Correlated Cleanup**: When cleaning up images, alongside obliterating database fingerprints, the system now simultaneously supports "synchronous deletion of local image files," genuinely freeing disk space and perfectly complementing custom storage paths.
-
-##### 🐞 Bug Fixes
-- **🌐 Web Link Identification Fix**: Optimized clipboard type judgment logic. URL/email addresses copied in plain text format will be forcibly recognized as plain text, resolving the issue where styled links copied from web pages were misidentified as HTML.
-- **🎨 Color Code Misclassification Fix**: Refactored color recognition validation engine to only validate standard color values, preventing ordinary English words (e.g., `Tan`, `azure`, etc.) from being falsely recognized and highlighted.
-
-##### 🐛 Upstream Bug Fixes
-- **📂 File Icon Path Isolation Fix**: Deeply integrated the `tauri-plugin-fs-pro` underlying API. File icons will now precisely save into the user's custom directory and no longer leave redundant files in the system's default `AppData` path.
-
-#### M05.0
-
-#### ✨ New Features
-- **📅 Multi-Dimensional Filtering**: Added combined "Date + Content Type" multi-dimensional filtering. Click the funnel icon at the top to open the filter panel. Supports three independent date filter modes — by day, by month, and custom date range — along with multi-select for 12 content type tags, enabling efficient and precise content inspection.
-- **🧩 Code (SVG) Smart Detection**: Added intelligent SVG formatted content recognition at the code level, leveraging "regex pre-screening of component skeleton + DOMParser XML structure parsing" dual validation for security, with SVG results categorized under the explicit `Code (SVG)` label.
-- **📌 Detail-Level Global Tooltip**: Hovering over any text area in a content item's header reveals comprehensive core attributes including source app, content type, character count (file size / resolution), creation time, and more for convenient detail inspection.
-
-#### 💫 UX Optimization
-- **📝 Adaptive Precise Time Display**: Refactored clipboard history time display logic. When relative time (e.g., "3 days ago") exceeds 3 days, it automatically switches to the `YY/M/D H:mm` absolute time format for clearer and more informative time tracing.
-- **🧹 Top Controls Layout Reorganization**: Optimized the top layout of the search floating window by narrowing the search input width and front-loading the "Pin/Unpin" and "Preferences" action button groups for significantly improved access to high-frequency operations.
-- **🏗️ Focus Management Full Rollback**: The "No-Focus Silent Window" and "Window Follows Caret Position" features have been fully reverted to the original v0.6.0-beta.3 implementation, removing the background polling threads and additional mount interfaces that relied heavily on the Win32 API, and restoring the main window's native focus capture mechanism.
-
-#### 🐞 Bug Fixes
-- **🚀 Group Switch on Activation Failure**: Completely resolved the issue where the "Preferences → Clipboard → Switch to All Groups on Window Activation" setting failed to take effect, ensuring the app strictly follows user-defined group rules upon activation.
-- **📰 Composite Code Misclassification**: Completely fixed a priority override vulnerability where copying mixed "plain text code + HTML rich text semantics" fragments from IDEs or web pages caused content to be forcibly classified as `HTML` hypertext type, ensuring accurate recognition and classification of copied code.
-- **🌐 HTML Code Misclassification**: Refactored the underlying HTML detection logic with regex compatibility for declaration headers and case-insensitive scenarios, completely resolving misclassification caused by skeleton validation failures and significantly improving detection accuracy.
-- **📝 Markdown Misclassification**: Completely refactored the Markdown detection logic, upgrading to a composite intelligent engine with "core syntax positive weighting + illegal feature negative penalty + strict prefix boundary validation", effectively resolving issues where JS and other code snippets were misidentified as Markdown.
-- **📋 JavaScript Code Misclassification**: Refactored the underlying code language detection engine, elevating JavaScript detection to the highest priority with targeted strong feature keywords for frontend build artifacts. Removed generic operators (`<<`, `>>`) from C++ detection rules that conflicted with JS shift operations, and added a JS feature "reverse kill" validation mechanism, completely resolving the persistent issue of obfuscated/minified frontend JS production code being misidentified as "Code (C++)".
-- **🗑️ Legacy Garbage Cleanup**: Performed deep comparison and thorough cleanup of residual temporary files from deprecated mounts, eliminating redundant data interference with future feature refactoring from the root.
-
-#### 🐛 Upstream Bug Fixes
-- **👁️ Full-Width Item Header Release**: Removed the original UI behavior of forcibly reserving fixed width for invisible action buttons on the right side. In unselected state, the record header attribute bar now achieves 100% full-width display, providing more content space and more complete information presentation.
-
-### M04.x <font size="-2" color="gray">(Based on original v0.6.0-beta.3 branch)</font>
-
-#### M04.6
-
-##### 🐞 Bug Fixes
-- **🔀 Group Switching Content Display Anomaly**: Fixed a race condition where rapidly switching groups in the clipboard window displayed incorrect content, caused by subsequent group click requests being discarded while the component was in a loading state.
-
-#### M04.5
-
-##### 🏗️ Architecture Optimization
-- **🛡️ Downward Compatibility Hardening**: Implemented the robustness principle of "conservative in what you send, liberal in what you accept", resolving crash issues during version downgrades caused by data structure incompatibilities.
-- **🗄️ Database Query Safeguard**: Refactored the database query layer utilizing a "Unified Column Definition → On-Demand Query" architecture, driven solely by the `historyColumnDefs` data source for both table creation and querying. Lower versions will automatically ignore unknown columns added by higher versions, completely eliminating downgrade crashes caused by structural differences.
-- **⚙️ Config Processing Safeguard**: Added the `strictDeepAssign` strict deep-merge mechanism. Config sync now only accepts options defined in the current version. Unknown config fields written by higher versions will be silently discarded, preventing rendering anomalies caused by state pollution.
-
-##### 💫 UX Optimization
-- **🎨 Text Selection Highlight Tuning**: Changed the selected text highlight background color in the clipboard to a softer blue `#4096FF`, and set the text color to white `#FFFFFF`.
-- **📍 "Back to Top" Button Position Tuning**: Standardized the position of the "Back to Top" button in the bottom right corner of the clipboard window, keeping its bottom and right margins equal.
-
-##### 🐞 Bug Fixes
-- **📋 Source App Tracking Fix**: Fixed an issue where, with `autoSort` enabled, the source icon/name of the latest clipboard item incorrectly reflected the currently active window rather than the original copying app. The app info from the original copy event is now preserved.
-- **💥 Downgrade Crash Fix**: Fixed a rendering crash (`Cannot destructure property 'key'`) that occurred when downgrading from a higher version to a lower version due to extra database fields in the clipboard window (effective for current and future versions).
-
-#### M04.4
-
-##### ✨ New Features
-- **✂️ Support for Text Snippet Selection**: You can select specific text snippets within the clipboard window and quickly perform "Copy / Paste" operations using the auto-popping floating toolbar or enhanced context menu. Supports `Plain Text`, `Rich Text`, and `HTML` types.
-- **🔛 Text Snippet Selection Toggle**: You can independently enable or disable partial text selection as needed (Preferences → Content Settings → Text Snippet Selection).
-
-#### M04.3
-
-##### ✨ New Features
-- **🎨 CMYK Color Detection**: Added smart extraction and preview support for CMYK color formats.
-
-##### 💫 UX Optimization
-- **🖱️ Context Menu Refactoring**:
-  - **Feature Grouping**: Categorized actions into "Copy/Paste", "Operations", and "Editing". Related functions are grouped together and operation paths shortened to improve selection efficiency.
-  - **Logical Ordering**: Arranged menu items based on operational flow and usage frequency.
-  - **Type-Specific Menus**: Tailor-made exclusive menu items for 12 content types (`Plain Text`, `Rich Text`, `HTML`, `Image`, `File`, `Markdown`, `Link`, `Path`, `Code`, `Email`, `Color`, `Command`).
-
-##### 🐞 Bug Fixes
-- **⚙️ Action Button Configuration**: Added the missing "Run" command in Preferences, allowing users to configure its visibility and order properly.
-- **🎨 Color Group Sync Fix**: Fixed the dynamic sync issue where new colors failed to auto-update at the top when viewing the "Color" group.
-
-#### M04.2
-
-##### ✨ New Features
-- **🔍 Windows Path & Command Smart Recognition**: Automatically detects environment variable paths (`%APPDATA%`, etc.), Shell folders (`shell:startup`, etc.), filesystem paths (`C:\Windows`, etc.) and system management commands (`regedit`, etc.), with one-click open or run via context menu and action buttons.
-- **🔄 Config Auto-Sync**: Preference changes are automatically synced to the user's custom data directory, ensuring backup configuration is always up-to-date.
-
-#### M04.1
-
-##### ✨ New Features
-- **☁️ WebDAV Cloud Backup Enhancement**:
-  - **Decoupled Slim/Full Backups**: Segmented backup policies into "Full" and "Slim" routines. Allows independent scheduling and management for manual or automatic backups.
-  - **Automated Scheduling Engine**: Built-in frontend task scheduler supporting flexible combinations of "Time", "Interval", and "Cron Expressions", enabling dual-pipeline scheduling for both full and slim backups.
-- **📝 Markdown Support**: Adopted a new score-weighted regex detection strategy to accurately identify Markdown structures, preventing misclassification of code or standard text, complete with independent rich Markdown editors.
-- **🖼️ Image Directory Locating**: Allows image types to open the system file explorer directly navigating precisely to the source file directory.
-
-##### 💫 UX Optimization
-- **☁️ Seamless Restore Interaction**: Refactored WebDAV restore logic to eagerly render UI skeletons and loaders while asynchronously fetching backup arrays, eliminating UI freezing and lack of feedback.
-- **💾 Backup Archive Compatibility**: Implemented a Staging Directory mapping technique ensuring WebDAV `.zip` structure is identical to native Export Data structure, achieving two-way compatibility.
-
-##### 🐞 Bug Fixes
-- **🌐 WebDAV Cross-Platform Directories**: Ensured automated creation of remote WebDAV folder trees via Rust hooks (`ensure_remote_dir`) fixing `405 Method Not Allowed` exceptions.
-- **💾 Database Backup Abortion Fixes**: Defensively patched `Invalid column type Null` errors thrown by underlying Kysely when blank records exist in the Clipboard History table.
-- **📋 Classification Weight Optimization**: Completely fixed an issue where copying cells in Excel resulted in forced downgrade of text content into images due to conflicting Image+HTML types holding the clipboard simultaneously.
-
-### M03.x <font size="-2" color="gray">(Based on original v0.6.0-beta.3 branch)</font>
-
-#### ✨ New Features
-- **☁️ WebDAV Cloud Backup**: Back up clipboard data to cloud storage via WebDAV protocol (Nutstore, NextCloud, etc.). Supports manual backup, automatic scheduled backups, backup count limits, and one-click restore.
-- **🔒 Native Credential Security**: Sensitive WebDAV configurations including server URLs, usernames, passwords, and paths are securely persisted via native Windows Credential Manager, fully encrypting data to prevent plaintext leakage and ensure privacy.
-- **🗑️ Optional Local Image Deletion**: When deleting images, a "Delete local file" option (checked by default) is shown in the confirmation dialog, allowing you to keep the local file while removing only the clipboard record.
-
-### M02.x <font size="-2" color="gray">(Based on original v0.6.0-beta.3 branch)</font>
-
-#### ✨ New Features
-- **🎨 Dedicated Groups & Color Preview**: Added native "Links", "Colors", "Code", and "Email" group categories. Accurately extracts and highlights RGB/RGBA color formats; path links are highlighted for quick access.
-- **📝 Rich Secondary Editing**: Supports independent pop-up editing for text and other rich content, with system-level quick file location.
-- **💻 Code Syntax Highlighting**: Automatically detects copied code snippets and renders IDE-quality syntax highlighting (Preferences → Clipboard → Display Settings → Code Syntax Highlight).
-- **🎯 Source App Tracking**: Shows the source app's icon and name when copying (Preferences → Clipboard → Display Settings → Record App Source).
-- **⚡️ Native Quick Access**: Support opening file paths directly in the system file explorer, opening web links in the browser with one click, and viewing images using the system's default image viewer.
-- **🔢 Custom Code/File Display Lines**: Extended line number customizations to support Code and File datatypes. (Preferences → Clipboard → Display Settings → Code/File display lines).
-
-> **Acknowledgments**: The implementation ideas for "Dedicated Groups & Color Preview", "Rich Secondary Editing", "Code Syntax Highlighting", "🎯 Source App Tracking", and "Native Quick Access" in this project refer to [EcoPaste-Sync](https://github.com/Ruszero01/EcoPaste-Sync). We hereby express our gratitude.
-
-#### 🐛 Upstream Bug Fixes
-- **📸 Perfect Screenshot Dump**: Rebuilt SQLite persistence and the underlying FS mapping path to save screenshots perfectly to custom local directories, entirely fixing the issue where built-in library limits caused custom directory crashes and broken image displays, while avoiding C: drive bloat.
-- **🔗 Duplicate Link Records**: Completely fixed the stubborn issue where copying a link produces two identical records in the clipboard.
-- **📊 Double Record of Copied Document Table Content**: Completely fixed the issue where copying content from tables in documents like Word or Excel resulted in two completely identical records appearing simultaneously in the clipboard.
-
-### M01.x <font size="-2" color="gray">(Based on original v0.6.0-beta.3 branch)</font>
-
-#### 🔄 Dynamic Expand/Collapse & Immersive Experience
-- **Full Content Expansion**: Provides expand/collapse buttons when content exceeds display limits; states persist across virtual scrolling.
-- **No-Focus Silent Window (Windows)**: The host app retains focus when the clipboard window appears; double-click to paste silently; auto-hides when clicking outside.
-- **Follow Input Cursor**: Window follows the editor's text cursor position for seamless workflow.
-- **Redesigned Preferences**: Added "Display Settings" section with granular control over advanced options.
-
-#### 📏 Advanced Text & Image Display
-- **Custom Text Display Lines**: Preferences → Clipboard → Display Settings → Text display lines (1-50 lines)
-- **Image Height Scaling**: Flexibly adjust image display height with smart expand/collapse (50-500 pixels)
-
-#### ⚙️ Config Persistence
-- All new settings are automatically saved to the user data directory and persist across app updates.
-
-#### 🐛 Upstream Bug Fixes
-- **📋 Clipboard Type Misidentification**: Completely fixed the issue where web images might be incorrectly identified as HTML due to html weight priority. Rewrote detection logic to give image types the highest priority.
-- **💾 Backup Tunnel Restored**: Re-enabled the data backup/restore entry that was hidden due to permission restrictions in the original version, ensuring stable imports and exports.
-
-#### 🔄 Auto Sync with Upstream
-- Automatically checks for updates from upstream 3899/EcoPaste-Pro daily
-- Auto-merges and triggers builds when new versions are available
-- Creates an issue for manual resolution if merge conflicts occur
+EcoPaste-Pro is built with **Tauri v2** and **React 18**, deeply integrated with Win32 native capabilities, offering minimal memory footprint, instant hotkey activation, and native desktop integration. Featuring 100% local data storage and Windows Credential Manager hardware-level encryption.
 
 ---
 
-## Feedback
+## 📖 Documentation Navigation
 
-1. 🔍 First, check out the [FAQ](https://ecopaste.cn/problem/macos/damage) or browse through the existing [issues](https://github.com/3899/EcoPaste-Pro/issues).
+* 🚀 **[Installation & Configuration Guide](./docs/install.md)**: Windows installation, seamless Win+V takeover, middle-click control, and shortcut recommendations.
+* 📜 **[Version Changelog](./docs/changelog.md)**: Detailed historical changelog from Pro.5.x to M01.x, feature releases, and bug fix logs.
+* ⚙️ **[Runtime & Data Storage](./docs/environment.md)**: Windows runtime requirements, SQLite database architecture, Windows Credential Manager security, and auto-vacuum maintenance.
+* 🛠️ **[Developer Guide](./docs/developer.md)**: Tauri v2 + React 18 project architecture, local build instructions, and Win32 Rust plugin deep dive.
+* 🔄 **[Data Sync & Mobile Interoperability](./docs/sync.md)**: Local HTTP receive API specification, Webhook dispatch, anti-loopback algorithm, and Android Tasker integration.
 
-2. ❓ If your issue remains unresolved, please submit a new [issue](https://github.com/3899/EcoPaste-Pro/issues/new/choose) with a detailed description to help us quickly identify and address the problem.
+---
 
+## ✨ Core Feature Highlights
 
+| Feature Area | Key Capabilities |
+| :--- | :--- |
+| 📋 **Intelligent Classification Matrix** | 12 content types (Plain Text, Rich Text, HTML, Image, File, Markdown, Link, Path, Code, Email, Color, Command). 4D detection engine for office table composites, SVG parser, syntax highlighting, and CMYK/RGB color extraction. |
+| 🖥️ **Dual Layout & Immersive Flow** | Classic top bar & new sidebar navigation. **Windows No-Focus Silent Paste Mode** (non-disruptive, double-click to paste). **Mouse Middle Click Global Toggle**, **Modifier Key Double-Tap Wakeup**, and **Seamless Win+V Takeover**. |
+| 📊 **Panoramic Storage Manager** | Multi-dimensional dashboard analyzing 12 data types. Square-root smoothing algorithm for long-tail balance. Smart timeline filtering, batch cleanup with **deep local image file deletion**, and automatic SQLite VACUUM. |
+| ☁️ **WebDAV Cloud Asset Backup** | Full and lite backup separation. Automated scheduling engine supporting **Scheduled time, Interval, and Cron expressions**. Credential encryption backed by Windows Credential Manager (DPAPI). |
+| 📱 **Cross-Device Sync & Automation** | Built-in local HTTP server (`POST /api/write`). Supports writing to PC clipboard via mobile automation (Tasker / Shortcuts). Equipped with **Anti-Loopback fingerprint protection** and 5 image transfer strategies. |
+| 🔒 **Local Privacy & Robustness** | Strict local-first architecture with zero telemetry or tracking probes. Single-Source-of-Truth database model providing robust backwards compatibility. |
+
+---
+
+## 🖼️ Interface Preview
+
+<div align="center">
+  <h4>Main Clipboard Window (Sidebar Navigation & Category Filtering)</h4>
+  <img src="./static/Clipboard.png" width="92%" alt="Clipboard" />
+  <br/><br/>
+
+  <h4>Preferences - Clipboard & Window Settings</h4>
+  <img src="./static/Settings - Clipboard.png" width="92%" alt="Settings Clipboard" />
+  <br/><br/>
+
+  <h4>Storage Statistics - Multi-Dimensional Analysis & Timeline</h4>
+  <img src="./static/Settings - Storage Statistics.png" width="92%" alt="Storage Statistics" />
+  <br/><br/>
+
+  <h4>Preferences - Shortcut Recording & Middle Click Control</h4>
+  <img src="./static/Settings - Shortcuts.png" width="92%" alt="Shortcuts" />
+  <br/><br/>
+
+  <h4>Data Backup - WebDAV Cloud Backup & Scheduling</h4>
+  <img src="./static/Settings - Data Backup.png" width="92%" alt="Data Backup" />
+  <br/><br/>
+
+  <h4>Data Sync - Local Receiver & Webhook Dispatch</h4>
+  <img src="./static/Settings - Data Sync.png" width="92%" alt="Data Sync" />
+</div>
+
+---
+
+## 📥 Downloads & Getting Started
+
+### 🔗 This Fork
+- 🚀 **Latest Release Download**: [Download Latest Windows Build from GitHub Releases](https://github.com/3899/EcoPaste-Pro/releases/latest)
+- 📖 **Documentation**:
+  - [Windows Installation & Configuration Guide](./docs/install.md)
+  - [Android Tasker Sync Guide](./docs/Android/README.md)
+
+### 🔗 Upstream Project
+- 🌐 GitHub: [EcoPasteHub/EcoPaste](https://github.com/EcoPasteHub/EcoPaste)
+- 📥 Releases: [EcoPaste Releases](https://github.com/EcoPasteHub/EcoPaste/releases)
+- 📚 Website: [EcoPaste Official Site](https://ecopaste.cn/)
+
+---
+
+## 🤝 Community & Issue Feedback
+
+1. 🔍 **Troubleshooting**: Check the [Installation Guide](./docs/install.md) or browse existing [Issues](https://github.com/3899/EcoPaste-Pro/issues).
+2. ❓ **Report Issues**: If you encounter bugs or have feature suggestions, feel free to [Submit an Issue](https://github.com/3899/EcoPaste-Pro/issues/new/choose) with your Windows version (10/11), reproduction steps, and logs.
+
+---
+
+## 📄 License & Acknowledgments
+
+- Licensed under [GPL-3.0 License](./LICENSE).
+- Special thanks to the upstream core project [EcoPasteHub/EcoPaste](https://github.com/EcoPasteHub/EcoPaste) for the foundation.
+- Ideas for "independent groups", "immersive editing", "code highlighting", and "source app extraction" were inspired by [EcoPaste-Sync](https://github.com/Ruszero01/EcoPaste-Sync).
